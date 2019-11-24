@@ -8,7 +8,7 @@ require "Header.php";
         </a>
 
         <ul>
-            <li><a href="../test/index.php">HOME</a></li>
+            <li><a href="../index.php">HOME</a></li>
             <li><a href="#">SEARCH OTHER PEOPLE</a></li>
             <li><a href="#">CONTACT</a></li>
         </ul>
