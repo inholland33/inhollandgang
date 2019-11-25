@@ -10,7 +10,7 @@ class User_Model extends Model
 
     public function userList()
     {
-        return $this->db->selectAll('SELECT userid, login, role FROM user');
+        return $this->db->selectAll('SELECT user_id, name, rank FROM user');
 
         /*$sth = $this->db->prepare('SELECT userid, login, role FROM user');
         $sth->execute();
@@ -19,7 +19,7 @@ class User_Model extends Model
 
     public function userSingleList($userid)
     {
-        return $this->db->selectOne('SELECT userid, login, role FROM user WHERE userid = :userid', array(':userid' => $userid));
+        return $this->db->selectOne('SELECT user_id, name, rank FROM user WHERE user_id = :user_id', array(':user_id' => $userid));
 
         /*$sth = $this->db->prepare('SELECT userid, login, role FROM user WHERE userid = :userid');
         $sth->execute(array(':userid' => $userid));
@@ -29,34 +29,34 @@ class User_Model extends Model
     public function create($data)
     {
         $this->db->insert('user', array(
-            'login' => $data['login'],
+            'name' => $data['name'],
             'password' => Hash::create('sha256', $data['password'], HASH_PASSWORD_KEY),
-            'role' => $data['role']
+            'rank' => $data['rank']
         ));
     }
 
     public function editSave($data)
     {
         $postData = array(
-            'login' => $data['login'],
+            'name' => $data['name'],
             'password' => Hash::create('sha256', $data['password'], HASH_PASSWORD_KEY),
-            'role' => $data['role']
+            'rank' => $data['rank']
         );
 
-        $this->db->update('user', $postData, "`userid` = {$data['userid']}");
+        $this->db->update('user', $postData, "`user_id` = {$data['user_id']}");
     }
 
     public function delete($userid)
     {
-        $sth = $this->db->prepare('SELECT role FROM user WHERE userid = :userid');
-        $sth->execute(array(':userid' => $userid));
+        $sth = $this->db->prepare('SELECT rank FROM user WHERE user_id = :user_id');
+        $sth->execute(array(':user_id' => $userid));
         $data = $sth->fetch();
-        if ($data['role'] == 'owner') {
+        if ($data['rank'] == 'owner') {
             return false;
         }
 
 
-        $this->db->delete('user', "userid = $userid");
+        $this->db->delete('user', "user_id = $userid");
 
         /*$sth = $this->db->prepare('DELETE FROM user WHERE userid = :userid');
         $sth->execute(array(

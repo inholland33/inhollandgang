@@ -1,7 +1,8 @@
+!
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-    <title><?= (isset($this->title)) ? $this->title : 'JREAM MVC'; ?></title>
+    <title><?= (isset($this->title)) ? $this->title : 'Haarlem Festival'; ?></title>
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo URL ?>favicon.ico"/>
     <link rel="stylesheet" href="<?php echo URL; ?>public/css/default.css"/>
     <script type="text/javascript" src="<?php //echo URL; ?>public/js/jquery.js"></script>
@@ -19,7 +20,7 @@
 <?php Session::init(); ?>
 
 <div id="header">
-    <h3 id="title">JREAM MVC</h3>
+    <h3 id="title">Haarlem Festival</h3>
     <br/>
     <?php //if (Session::get('loggedIn') == false):?>
     <a href="<?php echo URL; ?>index">Index</a>
@@ -29,7 +30,7 @@
     <?php if (Session::get('loggedIn') == true): ?>
         <a href="<?php echo URL; ?>dashboard">Dashboard</a>
         <a href="<?php echo URL; ?>note">Notes</a>
-        <?php if (Session::get('role') == 'owner'): ?>
+        <?php if (Session::get('rank') == 'owner'): ?>
             <a href="<?php echo URL; ?>user">User</a>
         <?php endif; ?>
         <a href="<?php echo URL; ?>dashboard/logout">Logout</a>

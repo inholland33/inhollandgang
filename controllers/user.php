@@ -20,9 +20,9 @@ class User extends Controller
     public function create()
     {
         $data = array();
-        $data['login'] = $_POST['login'];
+        $data['name'] = $_POST['username'];
         $data['password'] = $_POST['password'];
-        $data['role'] = $_POST['role'];
+        $data['rank'] = $_POST['rank'];
 
         $this->model->create($data);
         header('location: ' . URL . 'user');
@@ -38,10 +38,10 @@ class User extends Controller
     public function editSave($userid)
     {
         $data = array();
-        $data['userid'] = $userid;
-        $data['login'] = $_POST['login'];
+        $data['user_id'] = $userid;
+        $data['name'] = $_POST['username'];
         $data['password'] = $_POST['password'];
-        $data['role'] = $_POST['role'];
+        $data['rank'] = $_POST['rank'];
 
         // @TODO: Do your error checking!
 

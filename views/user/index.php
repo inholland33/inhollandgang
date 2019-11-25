@@ -1,12 +1,14 @@
 <h1>User</h1>
 
 <form method="post" action="<?php echo URL; ?>user/create">
-    <label>Login</label><input type="text" name="login"/><br/>
-    <label>Password</label><input type="text" name="password"/><br/>
-    <label>Role</label>
-    <select name="role">
-        <option value="default">Default</option>
+    <label for="username">Username</label><input type="text" id="username" name="username"/><br/>
+    <label for="password">Password</label><input type="text" id="password" name="password"/><br/>
+    <label for="rank">Rank</label>
+    <select id="rank" name="rank">
+        <option value="customer">customer</option>
+        <option value="volunteer">volunteer</option>
         <option value="admin">Admin</option>
+        <option value="owner">owner</option>
     </select><br/>
     <label>&nbsp;</label><input type="submit"/>
 </form>
@@ -16,12 +18,12 @@
     //print_r($this);
     foreach ($this->userList as $key => $value) {
         echo '<tr>';
-        echo '<td>' . $value['userid'] . '</td>';
-        echo '<td>' . $value['login'] . '</td>';
-        echo '<td>' . $value['role'] . '</td>';
+        echo '<td>' . $value['user_id'] . '</td>';
+        echo '<td>' . $value['name'] . '</td>';
+        echo '<td>' . $value['rank'] . '</td>';
         echo '<td>
-				<a href="' . URL . 'user/edit/' . $value['userid'] . '">Edit</a>
-				<a href="' . URL . 'user/delete/' . $value['userid'] . '">Delete</a>
+				<a href="' . URL . 'user/edit/' . $value['user_id'] . '">Edit</a>
+				<a href="' . URL . 'user/delete/' . $value['user_id'] . '">Delete</a>
 			</td>';
         echo '</tr>';
     }
