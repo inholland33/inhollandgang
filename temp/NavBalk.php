@@ -3,6 +3,7 @@ require "Header.php";
 ?>
 <header>
     <nav>
+
         <a href="#">
             <img src="#" alt="logo">
         </a>
@@ -12,6 +13,7 @@ require "Header.php";
             <li><a href="#">SEARCH OTHER PEOPLE</a></li>
             <li><a href="#">CONTACT</a></li>
         </ul>
+
 
         <div>
             <form action="../logic/login.logic.php" method="post">
@@ -26,6 +28,7 @@ require "Header.php";
                 <button type="sumbit" name="logout-btn">Logout</button>
             </form>
         </div>
+
     </nav>
 </header>
 <?php
