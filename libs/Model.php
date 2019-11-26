@@ -2,6 +2,11 @@
 
 class Model
 {
+    /**
+     * Model constructor.
+     *
+     * :export hfa3.infhaarlem.nl database to localhost.haarlemfestival
+     */
 
     function __construct()
     {
