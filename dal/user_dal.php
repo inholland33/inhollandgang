@@ -1,11 +1,11 @@
 <?php
 
-class User_Model extends Model
+class User_Dal extends Dal
 {
 
     public function __construct()
     {
-        parent::__construct();
+        $this->db = parent::getInstance()->getConnection();
     }
 
     public function userList()

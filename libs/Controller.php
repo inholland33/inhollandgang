@@ -9,16 +9,16 @@ class Controller
         $this->view = new View();
     }
 
-    public function loadModel($name)
+    public function loadDal($name)
     {
 
-        $path = 'models/' . $name . '_model.php';
+        $path = 'dal/' . $name . '_dal.php';
 
         if (file_exists($path)) {
-            require 'models/' . $name . '_model.php';
+            require $path;
 
-            $modelName = $name . '_Model';
-            $this->model = new $modelName();
+            $dbName = $name . '_Dal';
+            $this->dal = new $dbName();
         }
     }
 

@@ -1,11 +1,11 @@
 <?php
 
-class AboutUs_Model extends Model
+class AboutUs_Dal extends Dal
 {
 
     function __construct()
     {
-        parent::__construct();
+        $this->db = parent::getInstance()->getConnection();
         //echo 'Help model';
     }
 

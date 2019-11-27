@@ -13,7 +13,7 @@ class User extends Controller
     public function index()
     {
         $this->view->title = 'User';
-        $this->view->userList = $this->model->userList();
+        $this->view->userList = $this->dal->userList();
         $this->view->render('user/index');
     }
 
@@ -24,14 +24,14 @@ class User extends Controller
         $data['password'] = $_POST['password'];
         $data['rank'] = $_POST['rank'];
 
-        $this->model->create($data);
+        $this->dal->create($data);
         header('location: ' . URL . 'user');
     }
 
     public function edit($userid)
     {
         $this->view->title = 'User: Edit';
-        $this->view->user = $this->model->userSingleList($userid);
+        $this->view->user = $this->dal->userSingleList($userid);
         $this->view->render('user/edit');
     }
 
@@ -45,13 +45,13 @@ class User extends Controller
 
         // @TODO: Do your error checking!
 
-        $this->model->editSave($data);
+        $this->dal->editSave($data);
         header('location: ' . URL . 'user');
     }
 
     public function delete($userid)
     {
-        $this->model->delete($userid);
+        $this->dal->delete($userid);
         header('location: ' . URL . 'user');
     }
 }
