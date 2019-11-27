@@ -30,25 +30,26 @@ $(function () {
                     '</br> ' +
                     '<textarea class="content" name="content' + o[i].content_id + '" rel="' + o[i].content_id + '" rows="4" cols="100">' + o[i].text + '</textarea>' +
                     '</br> ' +
-                    '<p class="status" rel="' + o[i].content_id + '"></p>');
+                    '<div rel="' + o[i].content_id + '" class="lds-ring">' +
+                    '<div></div><div></div><div></div><div></div></div>');
             }
 
         }, 'json');
     });
 
     $('.content').live('focusout', function () {
-        var rel = $(this).attr('rel');
-        $('.status[rel="' + rel + '"]').text("loading..");
-
-
         var id = $(this).attr('rel');
         var value = $(this).attr('value');
+
+        var loader = $('.lds-ring[rel="' + id + '"]');
+        loader.css('visibility', 'visible');
+
         $.post('content/asyncEdit/', {'id': id, 'value': value}, function (o) {
             if (o > 0) {
-                $('.status[rel="' + rel + '"]').text("Succes!");
+                loader.css('visibility', 'hidden');
 
             } else {
-                $('.status[rel="' + rel + '"]').text("failed...");
+                loader.css('visibility', 'hidden');
 
             }
 
