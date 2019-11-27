@@ -8,6 +8,7 @@ class Bootstrap
 
     private $_controllerPath = 'controllers/'; // Always include trailing slash
     private $_modelPath = 'model/'; // Always include trailing slash
+    private $_dalPath = 'dal/'; // Always include trailing slash
     private $_errorFile = 'err.php';
     private $_defaultFile = 'index.php';
 
@@ -69,7 +70,7 @@ class Bootstrap
         if (file_exists($file)) {
             require $file;
             $this->_controller = new $this->_url[0];
-            $this->_controller->loadModel($this->_url[0]);
+            $this->_controller->loadDal($this->_url[0]);
         } else {
             $this->_error();
             //echo 1;
@@ -159,6 +160,14 @@ class Bootstrap
         $this->_modelPath = trim($path, '/') . '/';
     }
 
+    /**
+     * (Optional) Set a custom path to dal
+     * @param string $path
+     */
+    public function setDalPath($path)
+    {
+        $this->_dalPath = trim($path, '/') . '/';
+    }
     /**
      * (Optional) Set a custom path to the error file
      * @param string $path Use the file name of your controller, eg: error.php

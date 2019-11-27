@@ -1,9 +1,8 @@
 $(function () {
 
     $.get('dashboard/xhrGetListings', function (o) {
-
         for (var i = 0; i < o.length; i++) {
-            $('#listInserts').append('<div>' + o[i].text + '<a class="del" rel="' + o[i].id + '" href="#">X</a></div>');
+            $('#listInserts').append('<div>' + o[i].content_id + " " + o[i].text + ' <a class="del" rel="' + o[i].content_id + '" href="#">X</a></div>');
         }
 
         $('.del').live('click', function () {
@@ -25,7 +24,7 @@ $(function () {
         var data = $(this).serialize();
 
         $.post(url, data, function (o) {
-            $('#listInserts').append('<div>' + o.text + '<a class="del" rel="' + o.id + '" href="#">X</a></div>');
+            $('#listInserts').append('<div>' + o.id + " " + o.text + ' <a class="del" rel="' + o.id + '" href="#">X</a></div>');
         }, 'json');
 
 

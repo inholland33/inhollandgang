@@ -1,11 +1,11 @@
 <?php
 
-class Help_Model extends Model
+class Help_Dal extends Dal
 {
 
     function __construct()
     {
-        //echo 'Help model';
+        $this->db = parent::getInstance()->getConnection();
     }
 
     function sayhola()

@@ -11,7 +11,7 @@ class Note extends Controller
 
     public function index()
     {
-        $this->view->noteList = $this->model->noteList();
+        $this->view->noteList = $this->dal->noteList();
         $this->view->render('note/index');
     }
 
@@ -21,13 +21,13 @@ class Note extends Controller
             'title' => $_POST['title'],
             'content' => $_POST['content']
         );
-        $this->model->create($data);
+        $this->dal->create($data);
         header('location: ' . URL . 'note');
     }
 
     public function edit($id)
     {
-        $this->view->note = $this->model->noteSingleList($id);
+        $this->view->note = $this->dal->noteSingleList($id);
 
         if (empty($this->view->note)) {
             die('This is an invalid note!');
@@ -46,13 +46,13 @@ class Note extends Controller
 
         // @TODO: Do your error checking!
 
-        $this->model->editSave($data);
+        $this->dal->editSave($data);
         header('location: ' . URL . 'note');
     }
 
     public function delete($id)
     {
-        $this->model->delete($id);
+        $this->dal->delete($id);
         header('location: ' . URL . 'note');
     }
 }

@@ -5,9 +5,12 @@ class Database extends PDO
 
     public function __construct($DB_TYPE, $DB_HOST, $DB_NAME, $DB_USER, $DB_PASS)
     {
-        parent::__construct($DB_TYPE . ':host=' . $DB_HOST . ';dbname=' . $DB_NAME, $DB_USER, $DB_PASS);
-
-        //parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTIONS);
+        try {
+            parent::__construct($DB_TYPE . ':host=' . $DB_HOST . ';dbname=' . $DB_NAME, $DB_USER, $DB_PASS);
+            parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
     }
 
     /**
@@ -102,6 +105,7 @@ class Database extends PDO
      */
     public function delete($table, $where, $limit = 1)
     {
-        return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
+//        return
+        $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
     }
 }
