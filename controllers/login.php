@@ -17,7 +17,7 @@ class Login extends Controller
 
     function run()
     {
-        $this->db->run();
+        $this->dal->run();
     }
 
 
