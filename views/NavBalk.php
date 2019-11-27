@@ -12,6 +12,7 @@
         <?php if (Session::get('role') == 'owner'): ?>
             <a href="<?php echo URL; ?>user">User</a>
         <?php endif; ?>
+        <a href="<?php echo URL; ?>content">Content</a>
         <a href="<?php echo URL; ?>dashboard/logout">Logout</a>
     <?php else: ?>
         <a href="<?php echo URL; ?>login">Login</a>
