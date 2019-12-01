@@ -1,4 +1,4 @@
-<?php
+<?php if(isset($message)){ echo $message;}
 $files = glob("uploads/*.*");
 for ($i=0; $i<count($files); $i++)
 {
@@ -14,6 +14,7 @@ for ($i=0; $i<count($files); $i++)
     if (in_array($ext, $supported_file)) {
         echo basename($image)."<br />"; // show only image name if you want to show full path then use this code // echo $image."<br />";
         echo '<img src="'.$image .'" alt="Random image" />'."<br /><br />";
+
     } else {
         continue;
     }
