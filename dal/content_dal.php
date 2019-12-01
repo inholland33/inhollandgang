@@ -3,10 +3,10 @@
  * Created by PhpStorm.
  * User: sande
  * Date: 11/27/2019
- * Time: 3:14 PM
+ * Time: 3:40 PM
  */
 
-class Model
+class Content_Dal
 {
 
 }

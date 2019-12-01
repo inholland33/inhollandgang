@@ -11,7 +11,7 @@ class Help extends Controller
     public function other($arg = false)
     {
 
-        $this->model->sayhola();
+        $this->dal->sayhola();
         $this->index();
 
     }

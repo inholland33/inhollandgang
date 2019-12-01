@@ -1,8 +1,7 @@
-</div>
+</section>
+<footer id="footer">
 
-<div id="footer">
-    (C) Footer
-</div>
+</footer>
 
 </body>
 </html>

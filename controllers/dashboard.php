@@ -7,7 +7,7 @@ class Dashboard extends Controller
     {
         parent::__construct();
         Auth::handleLogin();
-        $this->view->js = array('dashboard/js/default.js');
+//        $this->view->js = array('dashboard/js/default.js');
     }
 
     function index()
@@ -21,20 +21,4 @@ class Dashboard extends Controller
         header('location: ' . URL . 'login');
         exit;
     }
-
-    function xhrInsert()
-    {
-        $this->model->xhrInsert();
-    }
-
-    function xhrGetListings()
-    {
-        $this->model->xhrGetListings();
-    }
-
-    function xhrDeleteListing()
-    {
-        $this->model->xhrDeleteListing();
-    }
-
 }
