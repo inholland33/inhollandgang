@@ -5,7 +5,7 @@ body {
 
 #header {
     padding: 20px;
-    background: #12407f;
+    background: #FFC0CB;
 / / rosybrown;
 / / gold;
     color: #fff;
@@ -39,7 +39,7 @@ body {
 / / green;
     color: #fff;
     padding: 20px;
-    border-top: 4px solid #436fac;
+    border-top: 4px solid #FFC0CB;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
