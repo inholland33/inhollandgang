@@ -1,6 +1,6 @@
 $(function () {
 
-    $.get('dashboard/xhrGetListings', function (o) {
+    /*$.get('dashboard/xhrGetListings', function (o) {
         for (var i = 0; i < o.length; i++) {
             $('#listInserts').append('<div>' + o[i].content_id + " " + o[i].text + ' <a class="del" rel="' + o[i].content_id + '" href="#">X</a></div>');
         }
@@ -16,6 +16,50 @@ $(function () {
             return false;
         });
 
+    }, 'json');*/
+
+    //<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+
+
+    $('.getEvent').live('click', function () {
+        $('#listInserts').empty();
+        var event = $(this).attr('rel');
+        console.log(event);
+        $.post('content/asyncGetListings/', {'event': event}, function (o) {
+            for (var i = 0; i < o.length; i++) {
+                $('#listInserts').append('<label for="content">' + o[i].type + ': </label>' +
+                    '</br> ' +
+                    '<textarea class="content" name="content' + o[i].content_id + '" rel="' + o[i].content_id + '" rows="4" cols="100">' + o[i].text + '</textarea>' +
+                    '</br> ' /*+
+                    '<button class="btn-primary">Saved' +
+                    '<div rel="' + o[i].content_id + '" class="lds-ring">' +
+                    '<div></div><div></div><div></div><div></div></div>' +
+                    '<div class="success">v</div>' +
+                    '</button>'*/);
+            }
+
+        }, 'json');
+    });
+
+    $('.content').live('focusout', function () {
+        var id = $(this).attr('rel');
+        var value = $(this).attr('value');
+
+        var loader = $('.lds-ring[rel="' + id + '"]');
+        loader.css('visibility', 'visible');
+
+        $.post('content/asyncEdit/', {'id': id, 'value': value}, function (o) {
+            if (o > 0) {
+                loader.css('visibility', 'hidden');
+
+            } else {
+                loader.css('visibility', 'hidden');
+
+            }
+
+
+        }, 'json');
+    });
     }, 'json');
 
 
