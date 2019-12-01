@@ -1,17 +1,16 @@
 body {
-    background: silver;
+    background: #3F2698;
     font: 14px 'trebuchet ms', arial, sans-serif;
 }
 
 #header {
-    padding: 20px;
-    background: #FFC0CB;
-/ / rosybrown;
-/ / gold;
-    color: #fff;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom: 4px solid #436fac;
+    height: 60px;
+    width:100%;
+    left: 0px;
+    top: 0px;
+    position : fixed;
+    background: #21292B;
+    border-bottom: 4px solid #FFBE00;
 }
 
 #title {
@@ -21,7 +20,7 @@ body {
 
 #title a {
     color: #fff;
-    background: red;
+    background: #FFBE00;
     padding: 4px 15px;
     text-decoration: none;
     font-size: 151px;
@@ -30,23 +29,26 @@ body {
 
 #content {
     background: #fff;
+    position: absolute;
+    width: 80%;
+    top:60px;
     padding: 20px;
 }
 
 #footer {
-    background: #12407f;
-/ / steelblue;
-/ / green;
-    color: #fff;
-    padding: 20px;
-    border-top: 4px solid #FFC0CB;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    background: #21292B;
+    height: 30px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    color: #FFBE00;
+    width:100%
 }
 
 #header a {
-    color: #fff;
-    background: #436fac;
+    color: #000;
+    background: #FFBE00;
     padding: 4px 15px;
     text-decoration: none;
     font-size: 15px;
@@ -54,7 +56,8 @@ body {
 }
 
 #header a:hover {
-    background: #4d8add
+    background: #FFBE00;
+    color: #fff;
 }
 
 form {
