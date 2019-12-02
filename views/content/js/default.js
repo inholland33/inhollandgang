@@ -90,7 +90,6 @@ $(function () {
                 loader.css('display', 'none');
                 failed.css('display', 'inline-block');
                 success.css('display', 'none');
-
             }
 
 
@@ -106,7 +105,6 @@ $(function () {
         $.post(url, data, function (o) {
             $('#listInserts').append('<div>' + o.id + " " + o.text + ' <a class="del" rel="' + o.id + '" href="#">X</a></div>');
         }, 'json');
-
 
         return false;
     });
