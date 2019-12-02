@@ -1,10 +1,12 @@
 <header id="header">
-    <h3 id="title">JREAM MVC</h3>
-    <br/>
+    <h3 id="title">Haarlem Festival</h3>
+</br>
     <?php //if (Session::get('loggedIn') == false):?>
-    <a href="<?php echo URL; ?>index">Index</a>
-    <a href="<?php echo URL; ?>about-us">About Us</a>
-    <a href="<?php echo URL; ?>help">Help</a>
+    <a href="<?php echo URL; ?>index">Home</a>
+    <a href="<?php echo URL; ?>about-us">Events</a>
+    <a href="<?php echo URL; ?>help">Program</a>
+    <a href="<?php echo URL; ?>help">Tickets</a>
+    <a href="<?php echo URL; ?>help">Contact</a>
     <?php //endif; ?>
     <?php if (Session::get('loggedIn') == true): ?>
         <a href="<?php echo URL; ?>dashboard">Dashboard</a>
