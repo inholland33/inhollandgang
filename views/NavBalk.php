@@ -1,5 +1,5 @@
 <header id="header">
-    <h3 id="title">JREAM MVC</h3>
+    <h3 id="title">Haarlem Festival</h3>
     <br/>
     <?php //if (Session::get('loggedIn') == false):?>
     <a href="<?php echo URL; ?>index">Index</a>
