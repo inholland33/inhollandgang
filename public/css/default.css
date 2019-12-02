@@ -29,7 +29,7 @@ body {
 }
 
 #content {
-    background: #fff;
+    background: transparent;
     position: absolute;
     width: 80%;
     top:60px;
@@ -48,8 +48,8 @@ body {
 }
 
 #header a {
-    color: #000;
-    background: #FFBE00;
+    color: #FFBE00;
+    background: #21292B;
     padding: 4px 15px;
     text-decoration: none;
     font-size: 15px;
@@ -58,11 +58,16 @@ body {
 
 #header a:hover {
     background: #FFBE00;
-    color: #fff;
+    color: #21292B;
 }
 
 .h3 {
     font-size: 20px;
+    padding: 30px;
+}
+.button{
+    background: #FFBE00;
+    color: #21292B;
 }
 
 form {
