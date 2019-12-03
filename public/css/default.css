@@ -1,3 +1,9 @@
+*{
+    padding:0;
+    margin:0;
+    text-align: center;
+}
+
 body {
     background: #3F2690;
     font: 14px 'trebuchet ms', arial, sans-serif;
@@ -5,18 +11,19 @@ body {
 
 #header {
     height: 60px;
-    width:100%;
+    width: 100%;
     left: 0px;
     top: 0px;
-    position : fixed;
+    position: fixed;
     background: #21292B;
-    border-bottom: 4px solid #FFBE00;
+    text-align: left;
 }
 
 #title {
     margin-top: 0px;
     color: #FFBE00;
     margin-bottom: 0px;
+    text-align: left;
 }
 
 #title a {
@@ -30,8 +37,6 @@ body {
 
 #content {
     background: transparent;
-    position: absolute;
-    width: 80%;
     top:60px;
     padding: 20px;
 }
@@ -50,10 +55,15 @@ body {
 #header a {
     color: #FFBE00;
     background: #21292B;
-    padding: 4px 15px;
+    top:30px;
+    margin: 10px;
+    padding:15px;
+    text-after-overflow: center;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 35px;
     font-weight: bolder;
+    text-align: justify;
+    height:60px;
 }
 
 #header a:hover {
@@ -64,10 +74,24 @@ body {
 .h3 {
     font-size: 20px;
     padding: 30px;
+    text-align: left;
 }
-.button{
+.button1{
     background: #FFBE00;
+    position: relative;
+    margin: 50px;
+    font-size:28px;
+    height: 90px;
+    width:265px;
     color: #21292B;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    top:450px;
+    font-weight: 900;
+}
+.button1:hover{
+    background: #fff;
 }
 
 form {

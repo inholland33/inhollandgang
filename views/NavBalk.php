@@ -1,6 +1,7 @@
 <header id="header">
-    <h3 id="title">Haarlem Festival</h3>
+
     <?php //if (Session::get('loggedIn') == false):?>
+    <a href="<?php echo URL; ?>index">HAARLEM FESTIVAL</a>
     <a href="<?php echo URL; ?>index">Home</a>
     <a href="<?php echo URL; ?>about-us">Events</a>
     <a href="<?php echo URL; ?>help">Program</a>
