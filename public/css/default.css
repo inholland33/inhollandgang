@@ -1,8 +1,113 @@
+*{
+    padding: 0;
+    margin: 0;
+}
 body {
     background: #3F2690;
     font: 14px 'trebuchet ms', arial, sans-serif;
+    text-align: center;
+}
+/*Eventpages*/
+.container{
+    width: 100%;
+    margin-top: 64px;
+}
+/*head*/
+h1{
+    background-color: white;
+}
+#headerjazz{
+    width: 100%;
+    height: 30vh;
+}
+#jazztitel{
+    position: absolute;
+    margin-top: -200px;
+    margin-left: 37%;
+    font-size: 400%;
+    font-family: Moonlightning;
+    color: white;
+    z-index: 0;
+}
+#jazzondertitel{
+    position: absolute;
+    margin-top: -80px;
+    margin-left: 42%;
+    font-family: Moonlightning;
+    color: white;
+    z-index: 0;
+}
+/*middle*/
+article{
+    width: 100%;
+    height: 22vh;
+    text-align: left;
+    background-size: cover;
+}
+hr{
+    border-top: 3px solid #FFBE00;
+    margin-right: 70%;
+}
+section{
+    height: 20vh;
+    background-color: white;
+}
+#mainhall{
+    background-image: url("/inhollandgang/temp/uploads/EventJazzMainHal.png");
+}
+#secondhall{
+    background-image: url("/inhollandgang/temp/uploads/EventJazzSecondHall.png");
+}
+#thirdhall{
+    background-image: url("/inhollandgang/temp/uploads/EventJazzThirdHall.png");
+}
+#grotemarkt{
+    background-image: url("/inhollandgang/temp/uploads/EventJazzGrotenMarkt.png");
+}
+article p, article h2, article hr{
+    margin-left: 3%;
+    font-size: 300%;
+    font-family: Roboto;
+}
+article p{
+    font-size: 100%;
+}
+section h2{
+    font-size: 350%;
+    font-family: Roboto;
+}
+section p{
+    font-size: 100%;
+    font-family: Roboto;
+}
+.navigationbuttons{
+    height: 15vh;
+    background-color: white;
+}
+#gototicketpage{
+    background-color: #FFBE00;
+    padding: 15px 50px 15px 50px;
+    border-radius: 10px;
+    border: none;
+    margin-right: 4%;
+    margin-top: 2%;
+    font-family: Roboto;
+    font-size: 150%;
+    font-weight: bold;
+}
+#gotoprogrammpage{
+    background-color: #FFBE00;
+    padding: 15px 40px 15px 40px;
+    border-radius: 10px;
+    border: none;
+    margin-left: 4%;
+    margin-top: 2%;
+    font-family: Roboto;
+    font-size: 150%;
+    font-weight: bold;
 }
 
+/*navigationbar*/
 #header {
     height: 60px;
     width:100%;
@@ -11,64 +116,36 @@ body {
     position : fixed;
     background: #21292B;
     border-bottom: 4px solid #FFBE00;
+    z-index: 1;
 }
-
 #title {
     margin-top: 0px;
     color: #FFBE00;
     margin-bottom: 0px;
 }
-
-#title a {
+#header a {
+     color: #000;
+     background: #FFBE00;
+     padding: 4px 15px;
+     text-decoration: none;
+     font-size: 15px;
+     font-weight: bolder;
+ }
+#header a:hover {
     color: #fff;
-    background: #FFBE00;
-    padding: 4px 15px;
-    text-decoration: none;
-    font-size: 151px;
-    font-weight: bolder;
-}
-
-#content {
-    background: #fff;
-    position: absolute;
-    width: 80%;
-    top:60px;
-    padding: 20px;
 }
 
 #footer {
     background: #21292B;
-    height: 30px;
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
+    height: 15vh;
     width: 100%;
     color: #FFBE00;
-    width:100%
 }
 
-#header a {
-    color: #000;
-    background: #FFBE00;
-    padding: 4px 15px;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: bolder;
-}
-
-#header a:hover {
-    background: #FFBE00;
-    color: #fff;
-}
-
-.h3 {
-    font-size: 20px;
-}
-
+/*images*/
 form {
     font: 100% verdana, arial, sans-serif;
 }
-
 form label {
     display: block;
     float: left;
@@ -77,26 +154,21 @@ form label {
     margin: 9px 0 0;
     text-align: right;
 }
-
 form input, form select {
     width: auto;
     margin: 5px 0 0 10px;
     border: 1px solid gray;
     padding: 4px;
 }
-
 form input[type=submit]:hover {
     cursor: pointer;
     background: silver;
 }
-
 form br {
     clear: left;
 }
 
-
 /* load spinner*/
-
 .lds-ring {
     display: inline-block;
     visibility: hidden;
@@ -107,7 +179,6 @@ form br {
 .success{
     visibility: hidden;
 }
-
 .lds-ring div {
     box-sizing: border-box;
     display: block;
@@ -120,19 +191,15 @@ form br {
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: lightblue transparent transparent transparent;
 }
-
 .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
 }
-
 .lds-ring div:nth-child(2) {
     animation-delay: -0.3s;
 }
-
 .lds-ring div:nth-child(3) {
     animation-delay: -0.15s;
 }
-
 @keyframes lds-ring {
     0% {
         transform: rotate(0deg);
