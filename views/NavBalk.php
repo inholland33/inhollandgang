@@ -20,4 +20,3 @@
         <a href="<?php echo URL; ?>login">Login</a>
     <?php endif; ?>
 </header>
-<section id="content">
