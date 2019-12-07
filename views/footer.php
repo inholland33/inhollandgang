@@ -1,4 +1,4 @@
-</section>
+
 <footer id="footer">
 
 </footer>
