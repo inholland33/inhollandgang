@@ -69,6 +69,9 @@
     background: #FFBE00;
     color: #fff;
 }
+#h1{
+color: white;
+}
 
 .h3 {
     font-size: 20px;
@@ -81,12 +84,16 @@
     height: 90px;
     width:265px;
     color: #21292B;
-    border: none;
+    border:none;
     border-radius: 25px;
     text-align: center;
     top:450px;
     font-weight: 900;
 }
+.button1:hover{
+    color: white;
+}
+
 
 form {
     font: 100% verdana, arial, sans-serif;
