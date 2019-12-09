@@ -13,6 +13,6 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 
 //paths
-define('URL', 'http://localhost/inhollandgang/');
+define('URL', 'http://620651.infhaarlem.nl/project/inhollandgang/');
 
 define('LIBS', 'libs/');

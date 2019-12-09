@@ -1,0 +1,173 @@
+*{
+    padding:0;
+    margin:0;
+    text-align: center;
+}body {
+    background: #3F2690;
+    font: 14px 'trebuchet ms', arial, sans-serif;
+}
+
+#header {
+    height: 60px;
+    width:100%;
+    left: 0px;
+    top: 0px;
+    position : fixed;
+    background: #21292B;
+    border-bottom: 4px solid #FFBE00;
+}
+
+#title {
+    margin-top: 0px;
+    color: #FFBE00;
+    margin-bottom: 0px;
+}
+
+#title a {
+    color: #fff;
+    background: #FFBE00;
+    padding: 4px 15px;
+    text-decoration: none;
+    font-size: 151px;
+    font-weight: bolder;
+}
+
+#content {
+    background: #fff;
+    position: absolute;
+    width: 80%;
+    top:60px;
+    padding: 20px;
+}
+
+#footer {
+    background: #21292B;
+    height: 30px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    color: #FFBE00;
+    width:100%
+}
+
+#header a {
+    color: #FFBE00;
+    background: #21292B;
+    top:30px;
+    margin: 10px;
+    padding:15px;
+    text-after-overflow: center;
+    text-decoration: none;
+    font-size: 35px;
+    font-weight: bolder;
+    text-align: justify;
+    height:60px;
+}
+
+#header a:hover {
+    background: #FFBE00;
+    color: #fff;
+}
+#h1{
+color: white;
+}
+
+.h3 {
+    font-size: 20px;
+}
+.button1{
+    background: #FFBE00;
+    position: relative;
+    margin: 50px;
+    font-size:28px;
+    height: 90px;
+    width:265px;
+    color: #21292B;
+    border:none;
+    border-radius: 25px;
+    text-align: center;
+    top:450px;
+    font-weight: 900;
+}
+.button1:hover{
+    color: white;
+}
+
+
+form {
+    font: 100% verdana, arial, sans-serif;
+}
+
+form label {
+    display: block;
+    float: left;
+    width: 150px;
+    padding: 0;
+    margin: 9px 0 0;
+    text-align: right;
+}
+
+form input, form select {
+    width: auto;
+    margin: 5px 0 0 10px;
+    border: 1px solid gray;
+    padding: 4px;
+}
+
+form input[type=submit]:hover {
+    cursor: pointer;
+    background: silver;
+}
+
+form br {
+    clear: left;
+}
+
+
+/* load spinner*/
+
+.lds-ring {
+    display: inline-block;
+    visibility: hidden;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+.success{
+    visibility: hidden;
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    margin: 8px;
+    border: 4px solid lightblue;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: lightblue transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
