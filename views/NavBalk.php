@@ -1,9 +1,16 @@
 <header id="header">
 
     <?php //if (Session::get('loggedIn') == false):?>
-    <a href="<?php echo URL; ?>index">HAARLEM FESTIVAL</a>
-    <a href="<?php echo URL; ?>index">Home</a>
-    <a href="<?php echo URL; ?>about-us">Events</a>
+    <ae+- href="<?php echo URL; ?>index" >HAARLEM FESTIVAL</ae>
+    <div class="dropdown">
+        <button class="dropbtn">Events</button>
+        <div class="dropdown-content">
+            <a href="views/jazz/index.php">Jazz</a>
+            <a href="views/dance/index.php">Dance</a>
+            <a href="views/historic/index.php">Historic</a>
+            <a href="views/food/index.php">Food</a>
+        </div>
+    </div>
     <a href="<?php echo URL; ?>help">Program</a>
     <a href="<?php echo URL; ?>help">Tickets</a>
     <a href="<?php echo URL; ?>help">Contact</a>
