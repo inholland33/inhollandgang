@@ -21,5 +21,4 @@ class Controller
             $this->dal = new $dbName();
         }
     }
-
 }
