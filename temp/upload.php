@@ -1,5 +1,5 @@
 <?php
-$target_dir = "uploads/";
+$target_dir = "./uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -21,7 +21,7 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 50000000000000) {
+if ($_FILES["fileToUpload"]["size"] > 950000000000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
