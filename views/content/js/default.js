@@ -34,21 +34,16 @@ $(function () {
                         font_weight = "bold";
                         break;
                     case "subtitle":
-                        rows = 5;
-                        cols = 100;
-                        font_size = 12;
+                    case "content":
+                        rows = 7;
+                        cols = 125;
+                        font_size = 14;
                         font_weight = "regular";
                         break;
                     case "header":
                         rows = 1;
-                        cols = 20;
-                        font_size = 20;
-                        font_weight = "regular";
-                        break;
-                    case "content":
-                        rows = 5;
-                        cols = 100;
-                        font_size = 12;
+                        cols = 40;
+                        font_size = 24;
                         font_weight = "regular";
                         break;
                     case "image":
@@ -59,12 +54,11 @@ $(function () {
                         break;
                 }
                 $('#listInserts').append('<textarea class="content" name="content' + o[i].content_id + '" rel="' + o[i].content_id + '" rows="' + rows + '" cols="' + cols + '" style="font-weight: ' + font_weight + '; font-size: ' + font_size + 'px">' + o[i].text + '</textarea>' +
-                    '<button class="saved">Saved' +
-                    '<div rel="' + o[i].content_id + '" class="lds-ring">' +
-                    '<div></div><div></div><div></div><div></div></div>' +
-                    '<div rel="' + o[i].content_id + '"  class="success">&#10003;</div>' +
-                    '<div rel="' + o[i].content_id + '"  class="failed">&#10005;</div>' +
-                    '</button></br>');
+                    '<p class="status" rel="' + o[i].content_id + '"></p>' +
+                    '</br>');
+                if (!(i % 2)) {
+                    $('#listInserts').append('</br>');
+                }
             }
 
         }, 'json');
@@ -73,40 +67,33 @@ $(function () {
     $('.content').live('focusout', function () {
         var id = $(this).attr('rel');
         var value = $(this).attr('value');
-
-        var loader = $('.lds-ring[rel="' + id + '"]');
-        loader.css('display', 'inline-block');
-
-        var success = $('.success[rel="' + id + '"]');
-        var failed = $('.failed[rel="' + id + '"]');
+        var status = $('.status[rel="' + id + '"]');
 
         $.post('content/asyncEdit/', {'id': id, 'value': value}, function (o) {
             if (o > 0) {
-                loader.css('display', 'none');
-                success.css('display', 'inline-block');
-                failed.css('display', 'none');
+                status.html("Success! The changes are saved.");
+                status.removeClass("alert-warning");
+                status.addClass("alert alert-success");
 
             } else {
-                loader.css('display', 'none');
-                failed.css('display', 'inline-block');
-                success.css('display', 'none');
-
+                status.html("Warning! No changes being found.");
+                status.removeClass("alert-success");
+                status.addClass("alert alert-warning");
             }
 
-
         }, 'json');
     });
-
-    $('#randomInsert').submit(function () {
-        var url = $(this).attr('action');
-        var data = $(this).serialize();
-
-        $.post(url, data, function (o) {
-            $('#listInserts').append('<div>' + o.id + " " + o.text + ' <a class="del" rel="' + o.id + '" href="#">X</a></div>');
-        }, 'json');
+}, 'json');
 
 
-        return false;
-    });
+$('#randomInsert').submit(function () {
+    var url = $(this).attr('action');
+    var data = $(this).serialize();
 
+    $.post(url, data, function (o) {
+        $('#listInserts').append('<div>' + o.id + " " + o.text + ' <a class="del" rel="' + o.id + '" href="#">X</a></div>');
+    }, 'json');
+
+    return false;
 });
+
