@@ -9,8 +9,8 @@ $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $db);
 if( !$conn ) {
     echo'Could not connect: ' . mysqli_connect_error();
 }
-
-$spl = 'SELECT user_id, name from user';
+//fetch
+$spl = "SELECT 'user_id', 'name' from 'user'";
 
 $result = mysqli_query($conn, $spl);
 
