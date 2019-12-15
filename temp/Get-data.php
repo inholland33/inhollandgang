@@ -6,11 +6,11 @@ $db = 'hfa3_db';
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $db);
 
-if( !$conn ) {
+if( $conn ) {echo'works';}else{
     echo'Could not connect: ' . mysqli_connect_error();
 }
 //fetch
-$spl = "SELECT 'user_id', 'name' from 'user'";
+$spl = "SELECT 'user_id', 'name' from user";
 
 $result = mysqli_query($conn, $spl);
 
