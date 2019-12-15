@@ -23,26 +23,28 @@ $(function () {
 
     $('.getEvent').live('click', function () {
         $('#listInserts').empty();
+        $('#buttons').empty();
         var event = $(this).attr('rel');
+
         $.post('content/asyncGetListings/', {'event': event}, function (o) {
             for (var i = 0; i < o.length; i++) {
                 switch (o[i].type) {
                     case "title":
                         rows = 1;
-                        cols = 20;
+                        cols = 40;
                         font_size = 24;
                         font_weight = "bold";
                         break;
                     case "subtitle":
                     case "content":
                         rows = 7;
-                        cols = 125;
+                        cols = 92;
                         font_size = 14;
                         font_weight = "regular";
                         break;
                     case "header":
-                        rows = 1;
-                        cols = 40;
+                        rows = 2;
+                        cols = 50;
                         font_size = 24;
                         font_weight = "regular";
                         break;
@@ -53,38 +55,50 @@ $(function () {
                         font_weight = "none";
                         break;
                 }
-                $('#listInserts').append('<textarea class="content" name="content' + o[i].content_id + '" rel="' + o[i].content_id + '" rows="' + rows + '" cols="' + cols + '" style="font-weight: ' + font_weight + '; font-size: ' + font_size + 'px">' + o[i].text + '</textarea>' +
-                    '<p class="status" rel="' + o[i].content_id + '"></p>' +
-                    '</br>');
-                if (!(i % 2)) {
-                    $('#listInserts').append('</br>');
-                }
+                $('#listInserts').append('<p class="status" rel="' + o[i].content_id + '"></p></br>' +
+                    '<textarea ' +
+                    'class="content" ' +
+                    'id="content' + o[i].content_id + '" ' +
+                    'rel="' + o[i].content_id + '" ' +
+                    'rows="' + rows + '" ' +
+                    'cols="' + cols + '" ' +
+                    'style="font-weight: ' + font_weight + '; font-size: ' + font_size + 'px">' + o[i].text +
+                    '</textarea>');
             }
+            $('#buttons').append('</br>' +
+                '<button id="updateContent" class="btn btn-outline-success">Save All</button> ' +
+                '<a href="dashboard/logout" id="viewSite" rel="' + event + '" class="btn btn-outline-secondary">View Site</a>  ');
 
         }, 'json');
     });
 
     $('.content').live('focusout', function () {
         var id = $(this).attr('rel');
+
         var value = $(this).attr('value');
         var status = $('.status[rel="' + id + '"]');
+        var content = $(this);
 
-        $.post('content/asyncEdit/', {'id': id, 'value': value}, function (o) {
-            if (o > 0) {
-                status.html("Success! The changes are saved.");
-                status.removeClass("alert-warning");
-                status.addClass("alert alert-success");
+        try {
+            $.post('content/asyncEdit/', {'id': id, 'value': value}, function (o) {
 
-            } else {
-                status.html("Warning! No changes being found.");
-                status.removeClass("alert-success");
-                status.addClass("alert alert-warning");
+            }, 'json');
+        } catch (e) {
+            content.css("border", "red");
+            content.css("display", "block");
+            status.html("* " + e);
+            content.addClass("notUpdated");
             }
 
-        }, 'json');
     });
 }, 'json');
 
+
+$('#updateContent').live('click', function () {
+    if ($('.notUpdated').length === 0) {
+        alert("all data is saved!");
+    }
+});
 
 $('#randomInsert').submit(function () {
     var url = $(this).attr('action');

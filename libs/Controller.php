@@ -17,8 +17,8 @@ class Controller
         if (file_exists($path)) {
             require $path;
 
-            $dbName = $name . '_Dal';
-            $this->dal = new $dbName();
+            $dalName = $name . '_Dal';
+            $this->dal = new $dalName();
         }
     }
 }
