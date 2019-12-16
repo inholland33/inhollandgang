@@ -1,7 +1,9 @@
 <?php
+include 'image_to_db.php';
 $target_dir = "./uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
+$fileName = basename($_FILES["fileToUpload"]["name"]);
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
 
@@ -39,6 +41,7 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
         echo '<img src="'.$target_file .'" alt="Random image" />'."<br /><br />";
+        sendImage($fileName, $target_file);
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
