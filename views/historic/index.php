@@ -1,17 +1,18 @@
+<header>
 
-<div class = "container">
-    <h1>
+</header>
 
-        <p id="historictitel">HEADER</p>
-        <p id="historicondertitel">onder de header</p>
-    </h1>
+<div class="omslag">
+    <h1 >Historic Tour</h1>
+    <h2>Haarlem Festival</h2>
+</div>
+    </hh1>
     <section class="inleiding">
         <h2>INLEIDING KOP</h2>
         <p>INLEIDING</p>
     </section>
     <article id="summary">
         <h2>samenvatting wandeling</h2>
-        <hr>
         <p>uitleg wandeling</p>
     </article>
     <article id="locaties">
@@ -26,7 +27,7 @@
         <h2>Hof van Bakens</h2>
     </article>
     <section class="navigationbuttons">
-        <button type="button" id="gototicketpage" action="">tickets</button>
-        <button type="button" id="gotoprogrammpage"action="">programm</button>
+        <button class="button1" id="gototicketpage" action="">tickets</button>
+        <button class="button1" id="gotoprogrammpage"action="">programm</button>
     </section>
-</div>
+

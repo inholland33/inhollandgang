@@ -10,7 +10,7 @@ class jazz_dal extends Dal
 
     public function content()
     {
-        return $this->db->selectOne('SELECT text FROM content WHERE page LIKE "jazz"');
+        return $this->db->selectOne('SELECT text FROM content WHERE event LIKE "jazz"');
     }
 
 
