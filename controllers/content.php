@@ -12,7 +12,7 @@ class Content extends Controller
 
     function index()
     {
-        $this->view->render('content/index');
+        $this->view->render('content/index', true);
     }
 
     function asyncGetListings()

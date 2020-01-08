@@ -20,54 +20,68 @@ $(function () {
 
     //<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 
-
     $('.getEvent').live('click', function () {
         $('#listInserts').empty();
         $('#buttons').empty();
         var event = $(this).attr('rel');
 
-        $.post('content/asyncGetListings/', {'event': event}, function (o) {
-            for (var i = 0; i < o.length; i++) {
-                switch (o[i].type) {
+        $.post('content/asyncGetListings/', {'event': event}, function (result) {
+            for (var i = 0; i < result.length; i++) {
+                switch (result[i].type) {
                     case "title":
-                        rows = 1;
-                        cols = 40;
-                        font_size = 24;
-                        font_weight = "bold";
+                        result[i].rows = 2;
+                        result[i].cols = 40;
+                        result[i].font_size = 24;
+                        result[i].font_weight = "bold";
                         break;
                     case "subtitle":
                     case "content":
-                        rows = 7;
-                        cols = 92;
-                        font_size = 14;
-                        font_weight = "regular";
+                        result[i].rows = 7;
+                        result[i].cols = 92;
+                        result[i].font_size = 14;
+                        result[i].font_weight = "regular";
                         break;
                     case "header":
-                        rows = 2;
-                        cols = 50;
-                        font_size = 24;
-                        font_weight = "regular";
+                        result[i].rows = 2;
+                        result[i].cols = 50;
+                        result[i].font_size = 24;
+                        result[i].font_weight = "regular";
                         break;
                     case "image":
-                        rows = 0;
-                        cols = 0;
-                        font_size = 0;
-                        font_weight = "none";
+                        result.splice(i, 1);
+                        break;
+                    default:
+                        error("something went wrong!");
                         break;
                 }
-                $('#listInserts').append('<p class="status" rel="' + o[i].content_id + '"></p></br>' +
+            }
+
+            for (i = 0; i < result.length; i += 2) {
+                $('#listInserts').append('<section class="contentContainer"><p class="status" rel="' + result[i].content_id + '"></p></br>' +
                     '<textarea ' +
                     'class="content" ' +
-                    'id="content' + o[i].content_id + '" ' +
-                    'rel="' + o[i].content_id + '" ' +
-                    'rows="' + rows + '" ' +
-                    'cols="' + cols + '" ' +
-                    'style="font-weight: ' + font_weight + '; font-size: ' + font_size + 'px">' + o[i].text +
-                    '</textarea>');
+                    'id="content' + result[i].content_id + '" ' +
+                    'rel="' + result[i].content_id + '" ' +
+                    'rows="' + result[i].rows + '" ' +
+                    'cols="' + result[i].cols + '" ' +
+                    'style="font-weight: ' + result[i].font_weight + '; font-size: ' + result[i].font_size + 'px">' + result[i].text +
+                    '</textarea>' +
+
+                    '<p class="status" rel="' + result[i + 1].content_id + '"></p></br>' +
+                    '<textarea ' +
+                    'class="content" ' +
+                    'id="content' + result[i + 1].content_id + '" ' +
+                    'rel="' + result[i + 1].content_id + '" ' +
+                    'rows="' + result[i + 1].rows + '" ' +
+                    'cols="' + result[i + 1].cols + '" ' +
+                    'style="font-weight: ' + result[i + 1].font_weight + '; font-size: ' + result[i + 1].font_size + 'px">' + result[i + 1].text +
+                    '</textarea>' +
+                    '</section');
             }
+
             $('#buttons').append('</br>' +
-                '<button id="updateContent" class="btn btn-outline-success">Save All</button> ' +
-                '<a href="dashboard/logout" id="viewSite" rel="' + event + '" class="btn btn-outline-secondary">View Site</a>  ');
+                '<button id="updateContent" class="btn btn-success btn-lg">Save All</button> ' +
+                '<a href="' + event + '" id="viewSite" class="btn btn-outline-secondary btn-lg">View Site</a>  ');
 
         }, 'json');
     });
