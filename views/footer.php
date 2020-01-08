@@ -1,4 +1,4 @@
-
+</main>
 <footer id="footer">
 
 </footer>

@@ -1,7 +1,7 @@
 <header id="header">
 
     <?php //if (Session::get('loggedIn') == false):?>
-    <ae+- href="<?php echo URL; ?>index" >HAARLEM FESTIVAL</ae>
+    <ae href="<?php echo URL; ?>index">HAARLEM FESTIVAL</ae>
     <div class="dropdown">
         <button class="dropbtn">Events</button>
         <div class="dropdown-content">
@@ -27,4 +27,4 @@
         <a href="<?php echo URL; ?>login">Login</a>
     <?php endif; ?>
 </header>
-<section id="content">
+<main id="content">
