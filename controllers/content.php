@@ -12,29 +12,42 @@ class Content extends Controller
 
     function index()
     {
-        $this->view->render('content/index');
+        $this->view->render('content/index', true);
     }
 
-    function logout()
+    function asyncGetListings()
     {
-        Session::destroy();
-        header('location: ' . URL . 'login');
-        exit;
+        $event = $_POST["event"];
+        $table = "content";
+        $where = "event = :event";
+        $params = array(":event" => $event);
+
+        $this->dal->asyncGetListings($table, $where, $params);
     }
 
-    function xhrInsert()
+    function asyncEdit()
     {
-        $this->dal->xhrInsert();
+        $id = $_POST["id"];
+        $data = array("text" => $_POST["value"]);
+        $table = "content";
+
+        $this->dal->asyncEdit($table, $data, $id);
     }
+
+    function asyncInsert()
+    {
+        return $this->dal->asyncInsert();
+    }
+
 
     function xhrGetListings()
     {
-        $this->dal->xhrGetListings();
+        $this->dal->asyncGetListings();
     }
 
     function xhrDeleteListing()
     {
-        $this->dal->xhrDeleteListing();
+        $this->dal->asyncDeleteListing();
     }
 
 }

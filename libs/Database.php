@@ -16,14 +16,14 @@ class Database extends PDO
     /**
      * selectAll
      * @param string $sql An SQL string
-     * @param array $array Paramters to bind
+     * @param array $params Paramters to bind
      * @param constant $fetchMode A PDO Fetch mode
      * @return mixed
      */
-    public function selectAll($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC)
+    public function selectAll($sql, $params = array(), $fetchMode = PDO::FETCH_ASSOC)
     {
         $sth = $this->prepare($sql);
-        foreach ($array as $key => $value) {
+        foreach ($params as $key => $value) {
             $sth->bindValue("$key", $value);
         }
 
@@ -34,14 +34,14 @@ class Database extends PDO
     /**
      * selectOne
      * @param string $sql An SQL string
-     * @param array $array Paramters to bind
+     * @param array $params Paramters to bind
      * @param constant $fetchMode A PDO Fetch mode
      * @return mixed
      */
-    public function selectOne($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC)
+    public function selectOne($sql, $params = array(), $fetchMode = PDO::FETCH_ASSOC)
     {
         $sth = $this->prepare($sql);
-        foreach ($array as $key => $value) {
+        foreach ($params as $key => $value) {
             $sth->bindValue("$key", $value);
         }
 
@@ -76,7 +76,7 @@ class Database extends PDO
      * @param string $data An associative array
      * @param string $where the WHERE query part
      */
-    public function update($table, $data, $where)
+    public function update($table, $data, $where, $whereParams = array(), $fetchMode = PDO::FETCH_ASSOC)
     {
         ksort($data);
 
@@ -87,12 +87,15 @@ class Database extends PDO
         $fieldDetails = rtrim($fieldDetails, ',');
 
         $sth = $this->prepare("UPDATE $table SET $fieldDetails WHERE $where");
-
         foreach ($data as $key => $value) {
+            $sth->bindValue(":$key", $value);
+        }
+        foreach ($whereParams as $key => $value) {
             $sth->bindValue(":$key", $value);
         }
 
         $sth->execute();
+        return $sth->rowCount();
     }
 
     /**
@@ -108,4 +111,5 @@ class Database extends PDO
 //        return
         $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
     }
+
 }
