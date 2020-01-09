@@ -8,16 +8,20 @@ class View
         //echo 'this is the view';
     }
 
-    public function render($name, $noInclude = false)
+    public function render($name, $cms = false)
     {
-        if ($noInclude == true) {
-            require 'views/' . $name . '.php';
-        } else {
-            require 'views/header.php';
+        require 'views/header.php';
+
+//        if ($cms == true) {
+//            require 'views/cms_menu.php';
+//            require 'views/' . $name . '.php';
+//            require 'views/footer.php';
+//        }
+//        else {
             require 'views/NavBalk.php';
             require 'views/' . $name . '.php';
             require 'views/footer.php';
-        }
+//        }
     }
 
 }

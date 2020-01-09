@@ -1,14 +1,14 @@
 <header id="header">
 
     <?php //if (Session::get('loggedIn') == false):?>
-    <a href="<?php echo URL; ?>help">HAARLEM FESTIVAL</a>
+    <ae href="<?php echo URL; ?>index">HAARLEM FESTIVAL</ae>
     <div class="dropdown">
         <button class="dropbtn">Events</button>
         <div class="dropdown-content">
-            <a href="<?php echo URL; ?>jazz">Jazz</a>
-            <a href="<?php echo URL; ?>dance">Dance</a>
-            <a href="<?php echo URL; ?>historic">Historic</a>
-            <a href="<?php echo URL; ?>food">Food</a>
+            <a href="<?php echo URL; ?>/jazz">Jazz</a>
+            <a href="<?php echo URL; ?>/dance">Dance</a>
+            <a href="<?php echo URL; ?>/historic">Historic</a>
+            <a href="<?php echo URL; ?>/food">Food</a>
         </div>
     </div>
     <a href="<?php echo URL; ?>help">Program</a>
@@ -27,3 +27,4 @@
         <a href="<?php echo URL; ?>login">Login</a>
     <?php endif; ?>
 </header>
+<main id="content">

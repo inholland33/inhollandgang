@@ -1,14 +1,10 @@
-Content... Logged in only..
+<a href="#" class="getEvent" rel="jazz">Jazz</a>
+<a href="#" class="getEvent" rel="dance">Dance</a>
+<a href="#" class="getEvent" rel="food">Food</a>
+<a href="#" class="getEvent" rel="historic">Historic</a>
 
+<hr/>
 <br/>
 
-<form id="randomInsert" action="<?php echo URL; ?>dashboard/xhrInsert/" method="post">
-    <input type="text" name="text"/>
-    <input type="submit"/>
-</form>
-
-<br/>
-
-<div id="listInserts">
-
-</div>
+<article id="listInserts"></article>
+<article id="buttons"></article>
