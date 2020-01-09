@@ -3,17 +3,18 @@
 </header>
 
 <div class="omslag">
-    <h1 >Historic Tour</h1>
+    <h1>Historic Tour</h1>
     <h2>Haarlem Festival</h2>
 </div>
-    </hh1>
+<div class = "vlak1">
     <section class="inleiding">
         <h2>INLEIDING KOP</h2>
-        <p>INLEIDING</p>
+        <p1>INLEIDING</p1>
+</div>
     </section>
     <article id="summary">
         <h2>samenvatting wandeling</h2>
-        <p>uitleg wandeling</p>
+        <p2>uitleg wandeling</p2>
     </article>
     <article id="locaties">
         <h2>Saint Bavo Church</h2>
