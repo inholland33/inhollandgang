@@ -159,6 +159,7 @@ form br {
     position: relative;
     display: inline-block;
     border:none;
+    padding: 2px;
 }
 
 .dropdown-content {
@@ -212,10 +213,11 @@ H21{
     height: 125px;
 
 }
-.vlak2{
+.vlak2 {
     background-color: dimgray;
     width: 100%;
     height: 125px;
+}
 
 /* contentmanagement */
 #listInserts {

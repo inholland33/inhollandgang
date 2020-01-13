@@ -1,7 +1,11 @@
 <header id="header">
 
     <?php //if (Session::get('loggedIn') == false):?>
-    <ae href="<?php echo URL; ?>index">HAARLEM FESTIVAL</ae>
+    <a href="https://www.instagram.com"><img src="/inhollandgang/temp/uploads/insta.png"></a>
+    <a href="https://www.facebook.com"><img src="/inhollandgang/temp/uploads/facebook.png"></a>
+    <a href="https://www.twitter.com"><img src="/inhollandgang/temp/uploads/twitter.png"></a>
+    <a href="<?php echo URL; ?>index">HAARLEM FESTIVAL</a>
+    <a href="<?php echo URL; ?>/index">Home</a>
     <div class="dropdown">
         <button class="dropbtn">Events</button>
         <div class="dropdown-content">
@@ -24,7 +28,9 @@
         <a href="<?php echo URL; ?>content">Content</a>
         <a href="<?php echo URL; ?>dashboard/logout">Logout</a>
     <?php else: ?>
-        <a href="<?php echo URL; ?>login">Login</a>
+        <img src="/inhollandgang/temp/uploads/mandje.png"></a>
+        <img src="/inhollandgang/temp/uploads/inlog.png"></a>
+
     <?php endif; ?>
 </header>
 <main id="content">
