@@ -4,6 +4,7 @@
 // Create connection
 function sendImage( $Name, $Source) {
 
+
     $dbhost = 'localhost';
     $dbuser = 'hfa3';
     $dbpass = 'vlbEv6Vs';
