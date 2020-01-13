@@ -7,31 +7,37 @@ class Content extends Controller
     {
         parent::__construct();
         Auth::handleLogin();
-        $this->view->js = array('content/js/default.js');
+        $this->view->js = array('public/js/cms.js', 'views/content/js/default.js');
+        $this->view->css = array('public/css/cms.css', 'views/content/css/content.css');
     }
 
     function index()
     {
+        $this->view->title = "Content Management";
+        $this->view->user = $_SESSION['user']->name;
         $this->view->render('content/index', true);
     }
 
+
     function asyncGetListings()
     {
-        $event = $_POST["event"];
+        $page = $_POST["page"];
+
         $table = "content";
-        $where = "event = :event";
-        $params = array(":event" => $event);
+        $where = "page = :page";
+        $params = array(":page" => $page);
 
         $this->dal->asyncGetListings($table, $where, $params);
     }
 
     function asyncEdit()
     {
-        $id = $_POST["id"];
-        $data = array("text" => $_POST["value"]);
         $table = "content";
+        $id = $_POST["id"];
+        $text = array("text" => $_POST["value"]);
+//        $data = new Content_Model($id, null, null, $text);
 
-        $this->dal->asyncEdit($table, $data, $id);
+        $this->dal->asyncEdit($table, $id, $text);
     }
 
     function asyncInsert()

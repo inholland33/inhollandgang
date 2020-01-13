@@ -6,6 +6,7 @@ class Index extends Controller
     function __construct()
     {
         parent::__construct();
+        $this->view->css = array('public/css/default.css');
     }
 
     function index()

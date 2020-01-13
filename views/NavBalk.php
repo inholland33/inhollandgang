@@ -1,6 +1,6 @@
 <header id="header">
 
-    <?php //if (Session::get('loggedIn') == false):?>
+    <?php if (Session::get('loggedIn') == false): ?>
     <ae href="<?php echo URL; ?>index">HAARLEM FESTIVAL</ae>
     <div class="dropdown">
         <button class="dropbtn">Events</button>
@@ -14,10 +14,9 @@
     <a href="<?php echo URL; ?>help">Program</a>
     <a href="<?php echo URL; ?>help">Tickets</a>
     <a href="<?php echo URL; ?>help">Contact</a>
-    <?php //endif; ?>
+    <?php endif; ?>
     <?php if (Session::get('loggedIn') == true): ?>
         <a href="<?php echo URL; ?>dashboard">Dashboard</a>
-        <a href="<?php echo URL; ?>note">Notes</a>
         <?php if (Session::get('role') == 'owner'): ?>
             <a href="<?php echo URL; ?>user">User</a>
         <?php endif; ?>
@@ -28,4 +27,3 @@
     <?php endif; ?>
 </header>
 <main id="content">
-    <!--    test-->

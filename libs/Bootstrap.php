@@ -71,6 +71,7 @@ class Bootstrap
             require $file;
             $this->_controller = new $this->_url[0];
             $this->_controller->loadDal($this->_url[0]);
+            $this->_controller->loadModel($this->_url[0]);
         } else {
             $this->_error();
             //echo 1;

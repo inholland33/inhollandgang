@@ -7,6 +7,7 @@ class Note extends Controller
     {
         parent::__construct();
         Auth::handleLogin();
+        $this->view->css = array('public/css/cms.css');
     }
 
     public function index()
@@ -27,7 +28,7 @@ class Note extends Controller
 
     public function edit($id)
     {
-        $this->view->note = $this->dal->noteSingleList($id);
+//        $this->view->note = $this->dal->noteSingleList($id);
 
         if (empty($this->view->note)) {
             die('This is an invalid note!');
