@@ -15,4 +15,12 @@ class ContentModel
     public $article3;
     public $article4Title;
     public $article4;
+    public $article5Title;
+    public $article5;
+    public $article6Title;
+    public $article6;
+    public $article7Title;
+    public $article7;
+    public $article8Title;
+    public $article8;
 }

@@ -18,11 +18,15 @@ ul{
     padding-top: 58px;
 }
 /*head*/
-
-#headerjazz{
+#headerSearch{
     width: 100%;
     height: 30vh;
-    background-image: url('/inhollandgang/temp/uploads/JazzHeaderImage.jpg');
+    background-size: cover;
+}
+#headerFood{
+    width: 100%;
+    height: 30vh;
+    background-image: url('/inhollandgang/temp/uploads/foodheader.png');
     background-size: cover;
 }
 .titel{
@@ -35,10 +39,17 @@ ul{
     font-family: Moonlightning;
     color: white;
 }
-#headerdance {
+#headerdance{
     width: 100%;
     height: 25vh;
     background-image: url("/temp/uploads/DanceHeaderImage.jpg");
+}
+
+#search{
+    width: 100%;
+    height: 2vh;
+    text-align: left;
+    background-size: cover;
 }
 /*middle*/
 article{
@@ -55,23 +66,31 @@ section{
     height: 15vh;
     background-color: white;
 }
-#mainhall{
-    background-image: url("/inhollandgang/temp/uploads/EventJazzMainHal.png");
+
+/* moet nog food images uploaden */
+#mrmrs{
+    background-image: url("/inhollandgang/temp/uploads/mr&mrs.png");
 }
-#secondhall{
-    background-image: url("/inhollandgang/temp/uploads/EventJazzSecondHall.png");
+#ratatouille{
+    background-image: url("/inhollandgang/temp/uploads/ratatouille.png");
 }
-#thirdhall{
-    background-image: url("/inhollandgang/temp/uploads/EventJazzThirdHall.png");
+#goldenbull{
+    background-image: url("/inhollandgang/temp/uploads/goldenbull.png");
 }
-#grotemarkt{
-    background-image: url("/inhollandgang/temp/uploads/EventJazzGrotenMarkt.png");
+#fris{
+    background-image: url("/inhollandgang/temp/uploads/fris.png");
 }
-#lineup{
-    background-image: url("/inhollandgang/temp/uploads/EventJazzMainHal.png");
+#urban{
+    background-image: url("/inhollandgang/temp/uploads/urbanImage.png");
 }
-#venues{
-    background-image: url("/inhollandgang/temp/uploads/EventJazzSecondHall.png");
+#ML{
+    background-image: url("/inhollandgang/temp/uploads/ML.png");
+}
+#specktakel{
+    background-image: url("/inhollandgang/temp/uploads/specktakel.png");
+}
+#brinkman{
+    background-image: url("/inhollandgang/temp/uploads/brinkman.png");
 }
 article p, article h2, article hr{
     margin-left: 3%;

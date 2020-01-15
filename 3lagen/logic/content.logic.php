@@ -1,10 +1,9 @@
 <?php
 require '../DAL/content.dal.php';
-
+$input = $_REQUEST['Search'];
 class ContentLogic
 {
     public $content;
-
     private $contentDal;
 
     function __construct()
@@ -21,5 +20,11 @@ class ContentLogic
     function GetContentDancePage(){
         $this->content = $this->contentDal->GetContent("dance");
     }
-
+    function GetContentFoodPage(){
+        $this->content = $this->contentDal->GetContent("food");
+    }
+    function GetContentSearchPage(){
+        global $input;
+        $this->content = $this->contentDal->SearchContent("'.$input.'");
+    }
 }

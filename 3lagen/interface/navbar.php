@@ -66,5 +66,12 @@
                 <img src="" alt="profile">
             </li>
         </ul>
+
     </nav>
+    <form action="searchindex.php" methode="post">
+        <input type="text" name="Search" value="Search">
+        <input type="submit" >
+
+    </form>
 </div>
+

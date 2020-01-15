@@ -15,6 +15,7 @@
             <h2><?php echo $contentLogic->content->introTitle ?></h2>
             <p><?php echo $contentLogic->content->intro ?></p>
         </section>
+
         <article id="mainhall">
             <h2><?php echo $contentLogic->content->article1Title ?></h2>
             <hr>
