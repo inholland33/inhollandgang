@@ -19,28 +19,63 @@ $contentLogic->GetContentJazzPage();*/
                 $admincosts = 5;
                 $name = $_POST['name'];
                 foreach ($itemList as $item) {
-                    echo "<form action='shoppingcartindex.php?name=$name' method='post'><tr><td><input type='text' readonly='readonly' name='name' rel='$item->ticketid' value='$item->ticketName'/></td><td></td><td><button rel='$item->ticketid'class='change'>-</button><input type='text' readonly='readonly' name='amount' value='$item->ticketAmount'/><button class='change' rel='$item->ticketId'>+</button></td><td><input type='text' readonly='readonly' name='price' value='$item->ticketPrice'/></td></tr></form>";
+//                    action='shoppingcartindex.php?name=$name' method='post'
+                    echo "<p>
+<tr>
+    <td>
+        <input type='text' readonly='readonly' name='name' rel='$item->ticketId' value='$item->ticketName'/>
+    </td>
+    <td>
+        <button rel='$item->ticketid'class='change'>-</button>
+        <input type='text' readonly='readonly' class='amount' rel='$item->ticketId' value='$item->ticketAmount'/>
+        <button class='change' onclick='plusAmount($item->ticketId);' rel='$item->ticketId'>+</button>
+    </td>
+    <td>
+        <input type='text' readonly='readonly' name='price'  value='$item->ticketPrice'/>
+    </td>
+</tr>
+</p>";
                     $totalPrice = $totalPrice + ($item->ticketPrice * $item->ticketAmount);
                 }
 
 
                 ?>
                                 <script type="text/javascript">
-                                    $(function () {
-                                    var $input = $(".amount");
-                                    $input.val(0);
-                                    $input.each(function(i, object){
-                                        console.log(object.attr('rel'));
-                                    });
-                                    $(".change").click(function(){
+                                    function plusAmount(id) {
+                                        var $input = $(".amount").attr('rel');
                                         var $change = $(this).attr('rel');
+                                        if ($change === $input) {
 
-                                        if ($(this).hasClass('plus'))
-                                            $input.val(parseInt($input.val())+1);
-                                        else if ($input.val()>=1)
-                                            $input.val(parseInt($input.val())-1);
-                                    });
-                                    });
+                                            $input.val(parseInt($input.val()) + 1);
+                                        }
+
+                                        function minAmount(id) {
+                                            var $input = $(".amount").attr('rel');
+                                            var $change = $(this).attr('rel');
+                                            if ($change === $input) {
+
+                                                $input.val(parseInt($input.val()) - 1);
+
+                                            }
+
+
+                                        }
+
+                                        $(function () {
+                                            var $input = $(".amount");
+                                            $input.val(0);
+                                            console.log("testf");
+                                            $(".change").click(function(){
+                                                var $change = $(this).attr('rel');
+                                                if ($change === $input.attr('rel')) {
+                                                    console.log(1);
+                                                }
+                                                if ($(this).hasClass('plus'))
+                                                    $input.val(parseInt($input.val())+1);
+                                                else if ($input.val()>=1)
+                                                    $input.val(parseInt($input.val())-1);
+                                            });
+                                        });
                                 </script>
             </table>
             <hr>

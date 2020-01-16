@@ -20,12 +20,19 @@ $(function () {
 
     //<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 
-    $('.getEvent').live('click', function () {
+
+    $('.getPage').live('click', function () {
         $('#listInserts').empty();
         $('#buttons').empty();
-        var event = $(this).attr('rel');
+        $('.getPage').removeClass('active');
+        $('.getPage').prop('disabled', false);
+        $('.getPage').css('text-decoration', 'none');
 
-        $.post('content/asyncGetListings/', {'event': event}, function (result) {
+        $(this).addClass('active');
+        $(this).prop('disabled', true);
+        $(this).css('text-decoration', 'underline');
+        var page = $(this).attr('rel');
+        $.post('content/asyncGetListings/', {'page': page}, function (result) {
             for (var i = 0; i < result.length; i++) {
                 switch (result[i].type) {
                     case "title":
@@ -80,8 +87,8 @@ $(function () {
             }
 
             $('#buttons').append('</br>' +
-                '<button id="updateContent" class="btn btn-success btn-lg">Save All</button> ' +
-                '<a href="' + event + '" id="viewSite" class="btn btn-outline-secondary btn-lg">View Site</a>  ');
+                '<a href="' + page + '" id="viewSite" class="btn btn-outline-secondary btn-lg">View Site</a>' +
+                '<button id="updateContent" class="btn btn-success btn-lg">Save All</button>');
 
         }, 'json');
     });
