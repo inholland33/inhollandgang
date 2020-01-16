@@ -19,14 +19,9 @@ class Event_Dal extends Dal
         exit;
     }
 
-    public function asyncGetListings($tables, $where, $params)
+    public function asyncGetListings($sql, $params = array())
     {
-
-        $result = $this->db->selectAll("SELECT T.ticket_id, T.name AS ticketName, T.type, T.price, T.stock, T.start_date_time, T.end_date_time, A.name AS artistName 
-          FROM $tables[0] AS T 
-          JOIN $tables[1] AS TA ON T.ticket_id = TA.ticket_id  
-          JOIN $tables[2] AS A ON TA.artist_id = A.artist_id
-          WHERE $where ORDER BY T.ticket_id", $params);
+        $result = $this->db->selectAll($sql, $params);
         echo json_encode($result);
 
     }
@@ -40,9 +35,8 @@ class Event_Dal extends Dal
         echo json_encode($row);
     }
 
-    public function asyncDeleteListing()
+    public function asyncDeleteListing($tables, $where, $params)
     {
-        $id = (int)$_POST['id'];
-        $this->db->delete('content', "content_id = '$id'");
+        $this->db->delete($tables, $where, $params);
     }
 }

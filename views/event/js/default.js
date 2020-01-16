@@ -1,3 +1,25 @@
+function deleteEvent(ticket_id) {
+    $.post('event/asyncDeleteListing', {'ticket_id': ticket_id}, function (result) {
+
+    });
+}
+
+function addEvent() {
+
+    $('.addPanel').css('visibility', 'visible');
+    $('.addContainer').css('visibility', 'visible');
+
+    $.post('event/asyncGetArtists/', function (result) {
+        for (var i = 0; i < result.length; i++) {
+
+        }
+    })
+
+    // <input type="submit" name="addEventBtn" class="btn btn-success float-right" value="Add">
+
+}
+
+
 $(function () {
 
 
@@ -6,8 +28,6 @@ $(function () {
         $('#buttons').empty();
         var event = $(this).attr('rel');
         $.post('event/asyncGetListings/', {'event': event}, function (result) {
-            console.log(result);
-
             for (var i = 0; i < result.length; i++) {
 
                 //If this IS the LAST LOOP OR the NEXT ticket_id IS NOT the same as the CURRENT ticket_id
@@ -24,8 +44,8 @@ $(function () {
                         '<td>' + result[i].artistName + '</td>' +
                         '<td>' +
                         '<a href="./event/edit/' + result[i].ticket_id + '">edit </a>' +
-                        '<a href="./event/delete/' + result[i].ticket_id + '">delete</a>' +
-                        '<a href="./event/delete/' + result[i].ticket_id + '">delete</a>' +
+                        '<a href="#" onclick="deleteEvent(' + result[i].ticket_id + ');" >delete </a>' +
+                        '<a href="./event/switch/' + result[i].ticket_id + '">swap</a>' +
                         '</td>');
                 } else {
                     //The NEXT artist name is CURRENT artistName + NEXT artistName together
@@ -33,9 +53,18 @@ $(function () {
                 }
             }
             //ADD button
-            $('#buttons').append('</br> <button id="addEvent" class="btn btn-success btn-lg">Add</button>');
+            $('#buttons').append('</br> <button id="addEvent" class="btn btn-success float-right" onclick="addEvent();">New</button>');
 
         }, 'json');
+    });
+
+    $('.addPanel').click(function () {
+        $('.addPanel').css('visibility', 'hidden');
+        $('.addContainer').css('visibility', 'hidden');
+    });
+    $('#closePanel').click(function () {
+        $('.addPanel').css('visibility', 'hidden');
+        $('.addContainer').css('visibility', 'hidden');
     });
 
 

@@ -27,7 +27,21 @@ class Event extends Controller
         $where = "event = :event";
         $params = array(":event" => $event);
 
-        $this->dal->asyncGetListings($tables, $where, $params);
+        $sql = "SELECT T.ticket_id, T.name AS ticketName, T.type, T.price, T.stock, T.start_date_time, T.end_date_time, A.name AS artistName 
+          FROM $tables[0] AS T 
+          JOIN $tables[1] AS TA ON T.ticket_id = TA.ticket_id  
+          JOIN $tables[2] AS A ON TA.artist_id = A.artist_id
+          WHERE $where ORDER BY T.ticket_id";
+        $this->dal->asyncGetListings($sql, $params);
+    }
+
+    function asyncGetArtists()
+    {
+        $tables = ["artist"];
+        $where = "";
+        $sql = "SELECT name FROM $tables[0]";
+
+        $this->dal->asyncGetListings($sql, $where);
     }
 
     function asyncEdit()
@@ -44,15 +58,14 @@ class Event extends Controller
         return $this->dal->asyncInsert();
     }
 
-
-    function xhrGetListings()
+    function asyncDeleteListing()
     {
-        $this->dal->asyncGetListings();
-    }
+        $id = $_POST['ticket_id'];
 
-    function xhrDeleteListing()
-    {
-        $this->dal->asyncDeleteListing();
+        $tables = ["ticket"];
+        $where = "ticket_id = :ticket_id";
+        $params = array(":ticket_id" => $id);
+        $this->dal->asyncDeleteListing($tables, $where, $params);
     }
 
 }
