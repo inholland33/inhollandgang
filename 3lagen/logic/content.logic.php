@@ -25,6 +25,9 @@ class ContentLogic
     }
     function GetContentSearchPage(){
         global $input;
-        $this->content = $this->contentDal->SearchContent("'.$input.'");
+        $this->content = $this->contentDal->SearchContent("food");
+    }
+    function GetOrderSummary(){
+        $this->content = $this->contentDal->OrderView($orders);
     }
 }
