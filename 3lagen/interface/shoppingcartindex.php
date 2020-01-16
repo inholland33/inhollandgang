@@ -17,25 +17,31 @@ $contentLogic->GetContentJazzPage();*/
                 $itemList = $_SESSION['ticketsCart'];
                 $totalPrice = 0;
                 $admincosts = 5;
+                $name = $_POST['name'];
                 foreach ($itemList as $item) {
-                    echo "<tr><form action='../logic/changeamount.php' method='post'><td>$item->ticketName</td><td></td><td><button type='submit' name='decrease'>-</button><input type='text' name='amount' value='$item->ticketAmount' /><button type='submit' name='increase'>+</button></td><td>$item->ticketPrice</td></form></tr>";
+                    echo "<form action='shoppingcartindex.php?name=$name' method='post'><tr><td><input type='text' readonly='readonly' name='name' rel='$item->ticketid' value='$item->ticketName'/></td><td></td><td><button rel='$item->ticketid'class='change'>-</button><input type='text' readonly='readonly' name='amount' value='$item->ticketAmount'/><button class='change' rel='$item->ticketId'>+</button></td><td><input type='text' readonly='readonly' name='price' value='$item->ticketPrice'/></td></tr></form>";
                     $totalPrice = $totalPrice + ($item->ticketPrice * $item->ticketAmount);
                 }
 
 
                 ?>
-                <!--                <script>-->
-                <!--                    var $input = $(".amount");-->
-                <!--                    // Aumenta ou diminui o valor sendo 0 o mais baixo possível-->
-                <!--                    $input.val(0);-->
-                <!---->
-                <!--                    $(".change").click(function(){-->
-                <!--                        if ($(this).hasClass('plus'))-->
-                <!--                            $input.val(parseInt($input.val())+1);-->
-                <!--                        else if ($input.val()>=1)-->
-                <!--                            $input.val(parseInt($input.val())-1);-->
-                <!--                    });-->
-                <!--                </script>-->
+                                <script type="text/javascript">
+                                    $(function () {
+                                    var $input = $(".amount");
+                                    $input.val(0);
+                                    $input.each(function(i, object){
+                                        console.log(object.attr('rel'));
+                                    });
+                                    $(".change").click(function(){
+                                        var $change = $(this).attr('rel');
+
+                                        if ($(this).hasClass('plus'))
+                                            $input.val(parseInt($input.val())+1);
+                                        else if ($input.val()>=1)
+                                            $input.val(parseInt($input.val())-1);
+                                    });
+                                    });
+                                </script>
             </table>
             <hr>
             <table>
@@ -73,6 +79,24 @@ $contentLogic->GetContentJazzPage();*/
         </div>
     </div>
 </main>
+<tr>
+    <form action='shoppingcartindex.php?name=$name' method='post'>
+        <td>
+            <input type='text' readonly='readonly' name='name' value='$item->ticketName'/>
+        </td>
+        <td>
+
+        </td>
+        <td>
+            <button type='submit' name='decrease'>-</button>
+            <input type='text' readonly='readonly' name='amount' value='$item->ticketAmount'/>
+            <button type='submit' name='increase'>+</button>
+        </td>
+        <td>
+            <input type='text' readonly='readonly' name='price' value='$item->ticketPrice'/>
+        </td>
+    </form>
+</tr>
 
 <?php
 require 'footer.php';
