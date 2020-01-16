@@ -1,0 +1,98 @@
+body
+{
+    font-family: Arial;
+}
+#indexpage
+{
+    margin: 50px;
+    padding: 0;
+}
+.navigation
+{
+
+}
+.navigation ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: lightgray;
+}
+.navigation li
+{
+    float: left;
+}
+.navigation li a
+{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
+}
+.navigation li a:hover
+{
+    background-color: black;
+}
+.navigationTickets ul
+{
+
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+}
+.navigationTickets li
+{
+    float: left;
+}
+
+.ticketcontainer
+{
+    position: relative;
+    height: 300px;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+
+}
+.block
+{
+    display: block;
+    background-color: black;
+    opacity: 0.6;
+    width: 180px;
+    height: 280px;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+.ticketImg
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -2;
+}
+.ticketForm{
+    color: white;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+footer
+{
+    background-color: lightgray;
+    width: 100%;
+
+    bottom: 0;
+}
