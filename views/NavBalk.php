@@ -9,8 +9,8 @@
     <div class="dropdown">
         <button class="dropbtn">Events</button>
         <div class="dropdown-content">
-            <a href="<?php echo URL; ?>/jazz">Jazz</a>
-            <a href="<?php echo URL; ?>/dance">Dance</a>
+            <a href="<?php echo URL; ?>/3lagen/interface/jazzindex.php">Jazz</a>
+            <a href="<?php echo URL; ?>/3lagen/interface/danceindex.php">Dance</a>
             <a href="<?php echo URL; ?>/historic">Historic</a>
             <a href="<?php echo URL; ?>/food">Food</a>
         </div>
@@ -33,4 +33,3 @@
 
     <?php endif; ?>
 </header>
-<main id="content">

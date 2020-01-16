@@ -13,19 +13,14 @@ class jazz extends Controller
         parent::__construct();
     }
 
-    public function getPropperties()
+    public function getContent($type)
     {
-        $text[0] = $this->headTitel;
-        $text[1] = $this->headOndertitel;
-        $text[2] = $this->inleidingTitel;
-        $text[3] = $this->inleidingOndertitel;
-        return $text;
+        return $this->view->content = $this->dal->content($type);
     }
 
     public function index()
     {
         $this->view->title = 'Jazz';
-        $this->view->content = $this->dal->content();
         $this->view->render('jazz/index');
     }
 
