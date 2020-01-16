@@ -182,4 +182,20 @@ class ContentDal extends DB
             return $this->contentModel;
         }
     }
+    function OrderView($orders){
+        $content[] = "";
+        $type[] = "";
+        $counter = 0;
+        while($row = $orders){
+            $content[$counter] = $row['text'];
+            $type[$counter] = $row['type'];
+            $counter ++;
+        }
+
+        foreach ($type as $key => $i){
+            $this->contentModel->article1Title = $content[$key];
+
+        }
+        return $this->contentModel;
+    }
 }
