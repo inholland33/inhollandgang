@@ -17,7 +17,7 @@ session_start();
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="ticketpage.php">Tickets</a></li>
-                <li><a href="cart.php">Shopping cart</a></li>
+                <li><a href="shoppingcartindex.php">Shopping cart</a></li>
             </ul>
         </nav>
     </header>

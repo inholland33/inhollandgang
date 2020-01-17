@@ -17,25 +17,66 @@ $contentLogic->GetContentJazzPage();*/
                 $itemList = $_SESSION['ticketsCart'];
                 $totalPrice = 0;
                 $admincosts = 5;
+                $name = $_POST['name'];
                 foreach ($itemList as $item) {
-                    echo "<tr><form action='../logic/changeamount.php' method='post'><td>$item->ticketName</td><td></td><td><button type='submit' name='decrease'>-</button><input type='text' name='amount' value='$item->ticketAmount' /><button type='submit' name='increase'>+</button></td><td>$item->ticketPrice</td></form></tr>";
+//                    action='shoppingcartindex.php?name=$name' method='post'
+                    echo "<p>
+<tr>
+    <td>
+        <input type='text' readonly='readonly' name='name' rel='$item->ticketId' value='$item->ticketName'/>
+    </td>
+    <td>
+        <button rel='$item->ticketid'class='change'>-</button>
+        <input type='text' readonly='readonly' class='amount' rel='$item->ticketId' value='$item->ticketAmount'/>
+        <button class='change' onclick='plusAmount($item->ticketId);' rel='$item->ticketId'>+</button>
+    </td>
+    <td>
+        <input type='text' readonly='readonly' name='price'  value='$item->ticketPrice'/>
+    </td>
+</tr>
+</p>";
                     $totalPrice = $totalPrice + ($item->ticketPrice * $item->ticketAmount);
                 }
 
 
                 ?>
-                <!--                <script>-->
-                <!--                    var $input = $(".amount");-->
-                <!--                    // Aumenta ou diminui o valor sendo 0 o mais baixo possível-->
-                <!--                    $input.val(0);-->
-                <!---->
-                <!--                    $(".change").click(function(){-->
-                <!--                        if ($(this).hasClass('plus'))-->
-                <!--                            $input.val(parseInt($input.val())+1);-->
-                <!--                        else if ($input.val()>=1)-->
-                <!--                            $input.val(parseInt($input.val())-1);-->
-                <!--                    });-->
-                <!--                </script>-->
+                                <script type="text/javascript">
+                                    function plusAmount(id) {
+                                        var $input = $(".amount").attr('rel');
+                                        var $change = $(this).attr('rel');
+                                        if ($change === $input) {
+
+                                            $input.val(parseInt($input.val()) + 1);
+                                        }
+
+                                        function minAmount(id) {
+                                            var $input = $(".amount").attr('rel');
+                                            var $change = $(this).attr('rel');
+                                            if ($change === $input) {
+
+                                                $input.val(parseInt($input.val()) - 1);
+
+                                            }
+
+
+                                        }
+
+                                        $(function () {
+                                            var $input = $(".amount");
+                                            $input.val(0);
+                                            console.log("testf");
+                                            $(".change").click(function(){
+                                                var $change = $(this).attr('rel');
+                                                if ($change === $input.attr('rel')) {
+                                                    console.log(1);
+                                                }
+                                                if ($(this).hasClass('plus'))
+                                                    $input.val(parseInt($input.val())+1);
+                                                else if ($input.val()>=1)
+                                                    $input.val(parseInt($input.val())-1);
+                                            });
+                                        });
+                                </script>
             </table>
             <hr>
             <table>
@@ -73,6 +114,24 @@ $contentLogic->GetContentJazzPage();*/
         </div>
     </div>
 </main>
+<tr>
+    <form action='shoppingcartindex.php?name=$name' method='post'>
+        <td>
+            <input type='text' readonly='readonly' name='name' value='$item->ticketName'/>
+        </td>
+        <td>
+
+        </td>
+        <td>
+            <button type='submit' name='decrease'>-</button>
+            <input type='text' readonly='readonly' name='amount' value='$item->ticketAmount'/>
+            <button type='submit' name='increase'>+</button>
+        </td>
+        <td>
+            <input type='text' readonly='readonly' name='price' value='$item->ticketPrice'/>
+        </td>
+    </form>
+</tr>
 
 <?php
 require 'footer.php';

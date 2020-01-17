@@ -12,6 +12,7 @@
     </select><br/>
     <label>&nbsp;</label><input type="submit"/>
 </form>
+<br>
 
 <table>
     <?php

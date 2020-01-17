@@ -8,8 +8,19 @@
 
 class Content_Model extends Model
 {
-    public function __construct()
+    private $id;
+    private $page;
+    private $type;
+    private $text;
+
+    public function __construct($id, $page, $type, $text)
     {
-        parent::__constuct();
+        parent::__construct();
+
+        $this->id = $id;
+        $this->page = $page;
+        $this->type = $type;
+        $this->text = $text;
     }
+
 }

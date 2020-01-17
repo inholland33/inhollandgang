@@ -1,0 +1,41 @@
+/* contentmanagement */
+
+#listInserts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content {
+    vertical-align: top;
+    margin-bottom: 2px;
+    padding: 10px;
+    width: 28vw;
+    min-width: 440px;
+    max-width: 500px;
+    height: auto;
+}
+
+.contentContainer {
+    margin: 10px;
+    width: 28vw;
+    min-width: 440px;
+    max-width: 500px;
+}
+
+#buttons {
+    text-align: right;
+}
+
+.status {
+    display: none;
+
+}
+
+.active {
+    color: #333;
+}
+
+.active:hover {
+    color: #333;
+}
+
