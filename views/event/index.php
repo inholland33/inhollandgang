@@ -62,11 +62,11 @@
         <input id="end_date_time" class="form-control" type="datetime-local">
     </article>
 
+    <p>Artists</p>
     <article id="artists" class="form-group">
-        <p>Artists</p>
-        <label class="checkbox">One
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>
-        </label>
+        <!--        Artists are autoloaded in the default.js in function: addEvent();-->
+    </article>
+    <article id="submit" class="form-group">
+        <input type="submit" name="addEventBtn" class="btn btn-success float-right" value="Add">
     </article>
 </form>

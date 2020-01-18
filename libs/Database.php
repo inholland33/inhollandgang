@@ -23,8 +23,11 @@ class Database extends PDO
     public function selectAll($sql, $params = array(), $fetchMode = PDO::FETCH_ASSOC)
     {
         $sth = $this->prepare($sql);
-        foreach ($params as $key => $value) {
-            $sth->bindValue("$key", $value);
+        if (!empty($params)) {
+
+            foreach ($params as $key => $value) {
+                $sth->bindValue("$key", $value);
+            }
         }
 
         $sth->execute();

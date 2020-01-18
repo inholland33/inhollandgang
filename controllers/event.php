@@ -39,7 +39,7 @@ class Event extends Controller
     {
         $tables = ["artist"];
         $where = "";
-        $sql = "SELECT name FROM $tables[0]";
+        $sql = "SELECT artist_id, name FROM $tables[0]";
 
         $this->dal->asyncGetListings($sql, $where);
     }
@@ -53,8 +53,17 @@ class Event extends Controller
         $this->dal->asyncEdit($table, $data, $id);
     }
 
-    function asyncInsert()
+    function insert()
     {
+        $name = $_POST['name'];
+        $event = $_POST['event'];
+        $type = $_POST['type'];
+        $price = $_POST['price'];
+        $stock = $_POST['stock'];
+        $start_date_time = $_POST['start_date_time'];
+        $end_date_time = $_POST['end_date_time'];
+
+        $artist = $_POST['artist'];
         return $this->dal->asyncInsert();
     }
 
