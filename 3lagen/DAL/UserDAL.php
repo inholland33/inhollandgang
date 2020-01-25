@@ -21,4 +21,5 @@ class UserDAL extends DB
         $stmt->execute(['name' => $name, 'email'=> $email, 'password' =>$password,'dateofbirth'=> $dateOfBirth, 'rank'=>$rank]);
         return;
     }
+>>>>>>> origin/master
 }
