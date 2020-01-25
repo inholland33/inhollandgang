@@ -1,9 +1,9 @@
 <?php
-    require 'header.php';
-    require 'navbar.php';
-    require '../logic/content.logic.php';
-    $contentLogic = new ContentLogic();
-    $contentLogic->GetContentJazzPage();
+require 'header.php';
+require 'navbar.php';
+require '../logic/content.logic.php';
+$contentLogic = new ContentLogic();
+$contentLogic->GetContentJazzPage();
 ?>
 <main>
     <div class = "container">
@@ -43,6 +43,6 @@
     </div>
 </main>
 <?php
-    require 'footer.php';
+require 'footer.php';
 ?>
 
