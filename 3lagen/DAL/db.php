@@ -3,6 +3,7 @@
 
 class DB
 {
+
     private $serverName;
     private $userName;
     private $dbpwd;
