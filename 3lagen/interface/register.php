@@ -51,5 +51,5 @@ require "headerTicket.php";
     </section>
 </main>
 <?php
->>>>>>> origin/master
+
 require "footer.php";
