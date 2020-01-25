@@ -4,9 +4,10 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'haarlemfestival');
+
+
 class DB
 {
-
     private $serverName;
     private $userName;
     private $dbpwd;
@@ -24,6 +25,7 @@ class DB
         return $conn;
     }
 
+
     protected function dbconnenct()
     {
         try {
@@ -35,6 +37,8 @@ class DB
             echo "Connection failed: " . $e->getMessage();
         }
     }
+
+
 
 
 }
