@@ -42,6 +42,6 @@ if (isset($_POST['register']))
     }
 }
 else{
-    header("Location: ../interface/register.php");
+    header("Location: ../interface/ticketpage.php");
     exit();
 }

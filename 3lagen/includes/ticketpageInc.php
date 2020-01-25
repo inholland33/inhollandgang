@@ -1,5 +1,5 @@
 <?php
-require_once '../Ticket_model.php';
+require_once '../models/Ticket_model.php';
 session_start();
 if (isset($_POST['add']))
 {

@@ -1,18 +1,9 @@
 <?php
 
 
-class User extends UserDAL
+class Users extends UserDAL
 {
-    protected function getUser($username)
-    {
-        $sql = "SELECT user, password FROM user WHERE user = :username";
-        $stmt = $this->dbconnenct()->prepare($sql);
-        $stmt->execute(['username' => $username]);
-        while ($row = $stmt->fetch()){
-            $user = $row['user'];
-        }
-        return $user;
-    }
+
     public function register($username, $email, $password, $dateOfBirth, $rank)
     {
         $this->addUser($username, $email, $password, $dateOfBirth, $rank);
