@@ -6,6 +6,8 @@ class Help extends Controller
     function __construct()
     {
         parent::__construct();
+        $this->view->css = array('public/css/default.css');
+
     }
 
     public function other($arg = false)

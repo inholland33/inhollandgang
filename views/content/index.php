@@ -1,7 +1,9 @@
-<a href="#" class="getEvent" rel="jazz">Jazz</a>
-<a href="#" class="getEvent" rel="dance">Dance</a>
-<a href="#" class="getEvent" rel="food">Food</a>
-<a href="#" class="getEvent" rel="historic">Historic</a>
+<a href="#" class="getPage" rel="index">Home</a>
+<a href="#" class="getPage" rel="jazz">Jazz</a>
+<a href="#" class="getPage" rel="dance">Dance</a>
+<a href="#" class="getPage" rel="food">Food</a>
+<a href="#" class="getPage" rel="historic">Historic</a>
+<a href="#" class="getPage" rel="contact">Contact</a>
 
 <hr/>
 <br/>

@@ -2,14 +2,14 @@
 require_once '../includes/ticketpageInc.php';
 require_once '../logic/ticket.php';
 require_once '../DAL/Ticket_DAL.php';
-require_once '../models/Ticket_model.php';
+require_once '../Ticket_model.php';
 session_start();
 ?>
 <html>
 <head>
     <title></title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleTickets.css">
 </head>
 <body>
     <header>
@@ -17,7 +17,7 @@ session_start();
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="ticketpage.php">Tickets</a></li>
-                <li><a href="cart.php">Shopping cart</a></li>
+                <li><a href="shoppingcartindex.php">Shopping cart</a></li>
             </ul>
         </nav>
     </header>

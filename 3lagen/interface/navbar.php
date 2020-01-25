@@ -2,13 +2,13 @@
     <nav>
         <ul id="socialmedia">
             <li>
-                <img src="/inhollandgang/temp/uploads/instagramm.jpeg" alt="insta">
+                <a href="https://www.instagram.com"><img src="/inhollandgang/3lagen/interface/images/insta.png" alt="insta"></a>
             </li>
             <li>
-                <img src="/inhollandgang/temp/uploads/facebook.jpeg" alt="facebook">
+                <a href="https://www.facebook.com"><img src="/inhollandgang/3lagen/interface/images/facebook.png" alt="facebook"></a>
             </li>
             <li>
-                <img src="/inhollandgang/temp/uploads/twitter.jpeg" alt="twitter">
+                <a href="https://www.twitter.com"><img src="/inhollandgang/3lagen/interface/images/twitter.png" alt="twitter"></a>
             </li>
         </ul>
         <a id="homebutton">
@@ -40,7 +40,7 @@
                 </ul>
             </li>
             <li>
-                <a>
+                <a href="ticketpage.php">
                     tickets
                 </a>
             </li>
@@ -57,21 +57,16 @@
         </ul>
         <ul id="smallmenu">
             <li>
-                <img src="" alt="language">
+                <img src="/inhollandgang/3lagen/interface/images/GBflag.png"></a>
             </li>
             <li>
-                <img src="" alt="shoppingcart">
+                <img src="/inhollandgang/3lagen/interface/images/mandje.png"></a>
             </li>
             <li>
-                <img src="" alt="profile">
+                <img src="/inhollandgang/3lagen/interface/images/inlog.png"></a>
             </li>
         </ul>
 
     </nav>
-    <form action="searchindex.php" methode="post">
-        <input type="text" name="Search" value="Search">
-        <input type="submit" >
-
-    </form>
 </div>
 
