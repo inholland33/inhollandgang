@@ -12,6 +12,8 @@ ul{
     justify-content: center;
     list-style: none;
 }
+
+
 /*Eventpages*/
 .container{
     width: 100%;
@@ -22,7 +24,7 @@ ul{
 #headerjazz{
     width: 100%;
     height: 30vh;
-    background-image: url("/inhollandgang/temp/uploads/JazzHeaderImage.jpg");
+    background-image: url("../interface/images/JazzHeaderImage.jpg");
     background-size: cover;
 }
 .titel{
@@ -38,7 +40,7 @@ ul{
 #headerdance{
     width: 100%;
     height: 25vh;
-    background-image: url("/inhollandgang/temp/uploads/DanceHeaderImage.jpg");
+    background-image: url("../interface/images/DanceHeaderImage.jpg");
 }
 /*middle*/
 article{
@@ -56,22 +58,22 @@ section{
     background-color: white;
 }
 #mainhall{
-    background-image: url("/inhollandgang/temp/uploads/EventJazzMainHal.png");
+    background-image: url("../interface/images/EventJazzMainHal.png");
 }
 #secondhall{
-    background-image: url("/inhollandgang/temp/uploads/EventJazzSecondHall.png");
+    background-image: url("../interface/images/EventJazzSecondHall.png");
 }
 #thirdhall{
-    background-image: url("/inhollandgang/temp/uploads/EventJazzThirdHall.png");
+    background-image: url("../interface/images/EventJazzThirdHall.png");
 }
 #grotemarkt{
-    background-image: url("/inhollandgang/temp/uploads/EventJazzGrotenMarkt.png");
+    background-image: url("../interface/images/EventJazzGrotenMarkt.png");
 }
 #lineup{
-    background-image: url("/inhollandgang/temp/uploads/EventJazzMainHal.png");
+    background-image: url("../interface/images/EventJazzMainHal.png");
 }
 #venues{
-    background-image: url("/inhollandgang/temp/uploads/EventJazzSecondHall.png");
+    background-image: url("../interface/images/EventJazzSecondHall.png");
 }
 article p, article h2, article hr{
     margin-left: 3%;
@@ -96,6 +98,12 @@ section p{
 .navigationbuttons{
     height: 15vh;
     background-color: white;
+    width: 100%;
+    display: flex;
+}
+#forms{
+    display: flex;
+    margin: auto;
 }
 .gototicketpage{
     background-color: #FFBE00;
@@ -119,6 +127,9 @@ section p{
     font-size: 150%;
     font-weight: bold;
 }
+
+
+
 
 /*navigationbar*/
 nav{
@@ -147,12 +158,7 @@ nav{
     font-family: Moonlightning;
     font-size: 300%;
 }
-#footer {
-    background: #21292B;
-    height: 15vh;
-    width: 100%;
-    color: #FFBE00;
-}
+
 .dropbtn {
     color: #FFBE00;
     background: black;
@@ -200,6 +206,10 @@ nav{
     background-color: #FFBE00;
     color: white;
 }
+
+
+
+
 /*shoppingcart*/
 td{
     padding: 5px;
@@ -300,9 +310,21 @@ table{
     font-family: Moonlightning;
     margin-bottom: 20px;
 }
+
+
+/*indexpage*/
 #indextop{
-    background-image: url("/inhollandgang/temp/uploads/EventJazzGrotenMarkt.png");
+    background-image: url("../interface/images/EventJazzGrotenMarkt.png");
     background-size: cover;
     width: 100%;
     height: 25vh;
 }
+
+
+
+#footer {
+     background: #21292B;
+     height: 15vh;
+     width: 100%;
+     color: #FFBE00;
+ }

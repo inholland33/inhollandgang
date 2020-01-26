@@ -1,4 +1,6 @@
 <?php
+// Een header en een navigatiebalk toevoegen aan de pagina.
+// Ook de logicalaag aanroepen zodat er tickets ingeladen kunnen worden vanuit de DB.
 require 'header.php';
 require 'navbar.php';
 require '../models/Ticket_model.php';
@@ -9,6 +11,9 @@ session_start();
         <div class="container">
             <div id = "shoppingcartcontainer">
                 <h1 id="shoppingcarttitle">SHOPPINGCART</h1>
+<!--                De tickets staan in de session die gestart is bij de ticketpage.
+                    Eerst check ik of de session gevuld is, zo niet dan geef ik een bericht dat de session verlopen is.
+                    Hier laad ik de tickets in de elementen doormiddel van een forloop.-->
                 <?php if(!empty($_SESSION['ticketsCart'])) { ?>
                     <table id="tickettable">
                         <?php
@@ -33,6 +38,12 @@ session_start();
                             $totalPrice = $totalPrice + ($item->ticketPrice * $item->ticketAmount);
                         }
                         ?>
+<!--                        Omdat het overbodig leek de pagina te verversen elke keer dat de hoeveelheid aangepast werd heb ik gekozen om javascript hiervoor te gebruiken.
+                            Eerst haal ik de elementen op die eerder gevuld waren met waardes uit de session.
+                            Dan verhoog of verlaag ik het aantal en daarmee ook de prijzen.
+                            Daarna vul ik de elementen weer met de nieuwe waardes.
+                            Op het laatst check ik nog of het aantal niet 0 is of kleiner.
+                            Als dat wel het geval is geef ik een melding die vraagt of de gebruiker het item wil verwijderen.-->
                         <script type="text/javascript">
                             function ChangePlus(id) {
                                 var amount = document.getElementById(id+'+amount').innerHTML;
@@ -79,11 +90,6 @@ session_start();
                     </table>
                     <hr id="tabletable">
                     <div id="gotopayment">
-                        <div id="giftcard">
-                            <h2 id="giftcardtitle">GIFTCARD</h2>
-                            <label>ENTER GIFTCARDNUMBER: </label>
-                            <input type="text">
-                        </div>
                         <div id="confirmform">
                             <h2 id="confirmform">Confirmation</h2>
                             <div id="top">
@@ -110,6 +116,7 @@ session_start();
                     <form action="chose_payment.php" method="post">
                         <button id="gottopayment-btn" type="submit">GO TO PAYMENT</button>
                     </form>
+<!--                    Hier vraag ik alle nieuwe waardes weer op en roep ik een ajax call aan om de session te vernieuwen met deze nieuwe waardes.-->
 <!--                    <button id="gottopayment-btn" onclick='GoToPayment()'>GO TO PAYMENT</button>-->
 <!--                    <script type="text/javascript">-->
 <!--                        function GoToPayment() {-->

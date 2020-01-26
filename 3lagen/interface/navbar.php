@@ -14,7 +14,7 @@
         <a id="homebutton">
             HAARLEMFESTIVAL
         </a>
-        <a href="<?php echo URL; ?>/index">Home</a>
+        <a href="index.php">Home</a>
         <div class="dropdown">
             <button class="dropbtn">Events</button>
             <div class="dropdown-content">
@@ -24,15 +24,15 @@
                 <a href="foodindex.php">Food</a>
             </div>
         </div>
-        <a href="<?php echo URL; ?>help">Program</a>
-        <a href="<?php echo URL; ?>help">Tickets</a>
-        <a href="<?php echo URL; ?>help">Contact</a>
+        <a href="index.php">Program</a>
+        <a href="ticketpage.php">Tickets</a>
+        <a href="index.php">Contact</a>
         <ul id="smallmenu">
             <li>
                 <img src="/inhollandgang/3lagen/interface/images/GBflag.png"></a>
             </li>
             <li>
-                <img src="/inhollandgang/3lagen/interface/images/mandje.png"></a>
+                <a href="shoppingcartindex.php"><img src="/inhollandgang/3lagen/interface/images/mandje.png"></a>
             </li>
             <li>
                 <img src="/inhollandgang/3lagen/interface/images/inlog.png"></a>
