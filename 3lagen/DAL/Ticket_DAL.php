@@ -15,7 +15,6 @@ class Ticket_DAL extends db
             $data[] = $row;
         }
         return $data;
-
     }
     function getTicketsByTypeAndDate($type, $day)
     {
@@ -29,7 +28,6 @@ class Ticket_DAL extends db
             $data[] = $row;
         }
         return $data;
-
     }
     function insertTicketOrder()
     {

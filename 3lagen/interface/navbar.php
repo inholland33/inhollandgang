@@ -2,68 +2,40 @@
     <nav>
         <ul id="socialmedia">
             <li>
-                <img src="/inhollandgang/temp/uploads/instagramm.jpeg" alt="insta">
+                <a href="https://www.instagram.com"><img src="/inhollandgang/3lagen/interface/images/insta.png" alt="insta"></a>
             </li>
             <li>
-                <img src="/inhollandgang/temp/uploads/facebook.jpeg" alt="facebook">
+                <a href="https://www.facebook.com"><img src="/inhollandgang/3lagen/interface/images/facebook.png" alt="facebook"></a>
             </li>
             <li>
-                <img src="/inhollandgang/temp/uploads/twitter.jpeg" alt="twitter">
+                <a href="https://www.twitter.com"><img src="/inhollandgang/3lagen/interface/images/twitter.png" alt="twitter"></a>
             </li>
         </ul>
         <a id="homebutton">
             HAARLEMFESTIVAL
         </a>
-        <ul id="menu">
-            <li>
-                <a>
-                    home
-                </a>
-            </li>
-            <li >
-                <a id = "unfoldmenubutton" href="#">
-                    events
-                </a>
-                <ul id="unfoldmenu">
-                    <li>
-                        <a>JAZZ</a>
-                    </li>
-                    <li>
-                        <a>DANCE</a>
-                    </li>
-                    <li>
-                        <a>HISTORIC</a>
-                    </li>
-                    <li>
-                        <a>FOOD</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a>
-                    tickets
-                </a>
-            </li>
-            <li>
-                <a>
-                    programm
-                </a>
-            </li>
-            <li>
-                <a>
-                    contact
-                </a>
-            </li>
-        </ul>
+        <a href="index.php">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Events</button>
+            <div class="dropdown-content">
+                <a href="jazzindex.php">Jazz</a>
+                <a href="danceindex.php">Dance</a>
+                <a href="historic.php">Historic</a>
+                <a href="foodindex.php">Food</a>
+            </div>
+        </div>
+        <a href="index.php">Program</a>
+        <a href="ticketpage.php">Tickets</a>
+        <a href="index.php">Contact</a>
         <ul id="smallmenu">
             <li>
-                <img src="" alt="language">
+                <img src="/inhollandgang/3lagen/interface/images/GBflag.png"></a>
             </li>
             <li>
-                <img src="" alt="shoppingcart">
+                <a href="shoppingcartindex.php"><img src="/inhollandgang/3lagen/interface/images/mandje.png"></a>
             </li>
             <li>
-                <img src="" alt="profile">
+                <img src="/inhollandgang/3lagen/interface/images/inlog.png"></a>
             </li>
         </ul>
 

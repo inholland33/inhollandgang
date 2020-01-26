@@ -1,4 +1,6 @@
 <?php
+// Een header en een navigatiebalk toevoegen aan de pagina.
+// Ook de logicalaag aanroepen zodat er content ingeladen kan worden vanuit de DB.
 require 'header.php';
 require 'navbar.php';
 require '../logic/content.logic.php';
@@ -6,6 +8,7 @@ $contentLogic = new ContentLogic();
 $contentLogic->GetContentDancePage();
 ?>
 <main>
+    <!--    Hier roep ik variabele aan die in de logica laag uit de database worden gehaald, ik zet ze dan in de juiste elementen.-->
     <div class = "container">
         <section id="headerdance">
             <h1 class="titel"><?php echo $contentLogic->content->titel ?></h1>
@@ -25,9 +28,16 @@ $contentLogic->GetContentDancePage();
             <hr>
             <p><?php echo $contentLogic->content->article2 ?></p>
         </article>
+<!--        Hier maak ik twee knoppen die naar de programpage en ticketpage gaan. Ik geef een variabele event mee in de url zodat op de ticketpagina direct naar het dance event kan worden genavigeerd.-->
         <section class="navigationbuttons">
-            <button type="button" class ="gototicketpage" id="gototicketpagedance" action="">TICKETS</button>
-            <button type="button" class = "gotoprogrammpage" id="gotoprogrammpagedance"action="">PROGRAMM</button>
+            <div id="forms">
+                <form action="ticketpage.php?event=dance">
+                    <button type="submit" class ="gototicketpage" id="gototicketpagejazz">TICKETS</button>
+                </form>
+                <form action="index.php">
+                    <button type="submit" class = "gotoprogrammpage" id="gotoprogrammpagejazz">PROGRAMM</button>
+                </form>
+            </div>
         </section>
     </div>
 </main>

@@ -26,7 +26,7 @@ class Content_Dal extends Dal
 
     }
 
-    public function asyncEdit($table, $data, $id)
+    public function asyncEdit($table, $id, $data)
     {
         $where = "content_id = :id";
         $whereParams = array("id" => $id);

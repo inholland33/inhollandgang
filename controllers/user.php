@@ -8,13 +8,17 @@ class User extends Controller
         parent::__construct();
         Auth::handleLogin();
 
+        $this->view->css = array('public/css/cms.css');
+        $this->view->js = array('public/js/cms.js');
+        $this->view->user = $_SESSION['user']->name;
+
     }
 
     public function index()
     {
-        $this->view->title = 'User';
+        $this->view->title = 'User Management';
         $this->view->userList = $this->dal->userList();
-        $this->view->render('user/index');
+        $this->view->render('user/index', true);
     }
 
     public function create()
@@ -32,7 +36,7 @@ class User extends Controller
     {
         $this->view->title = 'User: Edit';
         $this->view->user = $this->dal->userSingleList($userid);
-        $this->view->render('user/edit');
+        $this->view->render('user/edit', true);
     }
 
     public function editSave($userid)

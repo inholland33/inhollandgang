@@ -1,7 +1,7 @@
 <?php
 require 'header.php';
 require 'navbar.php';
-require '../Ticket_model.php';
+require '../models/Ticket_model.php';
 session_start();
 /*$contentLogic = new ContentLogic();
 $contentLogic->GetContentJazzPage();*/

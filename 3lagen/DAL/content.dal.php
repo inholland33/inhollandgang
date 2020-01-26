@@ -1,6 +1,6 @@
 <?php
 require 'DB.php';
-require '../content.model.php';
+require '../models/content.model.php';
 
 class ContentDal extends DB
 {
