@@ -107,17 +107,34 @@ session_start();
                             </div>
                         </div>
                     </div>
-                    <button id="gottopayment-btn" onclick='GoToPayment()'>GO TO PAYMENT</button>
-                    <script type="text/javascript">
-                        function GoToPayment() {
-                            var rows = document.getElementsByClassName('rows').innerHTML;
-                            var array;
-                            for(var i = 0; i < rows.length; ++i){
-                                var name = $(rows[i]).find('.name');
-                                console.log(name);
-                            }
-                        }
-                    </script>
+                    <form action="chose_payment.php" method="post">
+                        <button id="gottopayment-btn" type="submit">GO TO PAYMENT</button>
+                    </form>
+<!--                    <button id="gottopayment-btn" onclick='GoToPayment()'>GO TO PAYMENT</button>-->
+<!--                    <script type="text/javascript">-->
+<!--                        function GoToPayment() {-->
+<!--                            var tickets = new Array();-->
+<!--                            var names = document.getElementsByClassName('name').innerHTML;-->
+<!--                            var amounts = document.getElementsByClassName('amount').innerHTML;-->
+<!--                            var prices = document.getElementsByClassName('price').innerHTML;-->
+<!--                            console.log(names);-->
+<!--                            for(var i = 0; i < 5; ++i){-->
+<!--                                var ticket = new Object(),-->
+<!--                                    ticketName = "",-->
+<!--                                    ticketAmount = 0,-->
+<!--                                    ticketPrice = 0;-->
+<!--                                ticket[ticketName] = names[i];-->
+<!--                                ticket[ticketAmount] = amounts[i];-->
+<!--                                ticket[ticketPrice] = prices[i];-->
+<!--                                tickets.push(ticket);-->
+<!--                            }-->
+<!--                            $.ajax({-->
+<!--                                url: '../logic/goToPayment.php',-->
+<!--                                method: 'POST',-->
+<!--                                data: tickets-->
+<!--                            });-->
+<!--                        }-->
+<!--                    </script>-->
                 <?php }else{
                     echo "<p>SESSION EXPIRED... EMPTY!!!</p>";
                 } ?>

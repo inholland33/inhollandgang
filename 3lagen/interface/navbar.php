@@ -14,47 +14,19 @@
         <a id="homebutton">
             HAARLEMFESTIVAL
         </a>
-        <ul id="menu">
-            <li>
-                <a>
-                    home
-                </a>
-            </li>
-            <li >
-                <a id = "unfoldmenubutton" href="#">
-                    events
-                </a>
-                <ul id="unfoldmenu">
-                    <li>
-                        <a>JAZZ</a>
-                    </li>
-                    <li>
-                        <a>DANCE</a>
-                    </li>
-                    <li>
-                        <a>HISTORIC</a>
-                    </li>
-                    <li>
-                        <a>FOOD</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="ticketpage.php">
-                    tickets
-                </a>
-            </li>
-            <li>
-                <a>
-                    programm
-                </a>
-            </li>
-            <li>
-                <a>
-                    contact
-                </a>
-            </li>
-        </ul>
+        <a href="<?php echo URL; ?>/index">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Events</button>
+            <div class="dropdown-content">
+                <a href="jazzindex.php">Jazz</a>
+                <a href="danceindex.php">Dance</a>
+                <a href="historic.php">Historic</a>
+                <a href="foodindex.php">Food</a>
+            </div>
+        </div>
+        <a href="<?php echo URL; ?>help">Program</a>
+        <a href="<?php echo URL; ?>help">Tickets</a>
+        <a href="<?php echo URL; ?>help">Contact</a>
         <ul id="smallmenu">
             <li>
                 <img src="/inhollandgang/3lagen/interface/images/GBflag.png"></a>

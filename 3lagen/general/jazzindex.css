@@ -147,32 +147,59 @@ nav{
     font-family: Moonlightning;
     font-size: 300%;
 }
-#menu li{
-    margin-left: 2%;
-    margin-right: 2%;
-    font-family: Roboto;
-    font-size: 150%;
-    margin-top: 15px;
-}
 #footer {
     background: #21292B;
     height: 15vh;
     width: 100%;
     color: #FFBE00;
 }
-#smallmenu{
-    margin-left: 5%;
-}
-#unfoldmenu{
-    position: absolute;
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    margin-top: 18px;
-    display: none;
-    z-index: 1;
+.dropbtn {
+    color: #FFBE00;
+    background: black;
+    border:none;
+    padding: 0;
+    text-after-overflow: center;
+    text-decoration: none;
+    font-size: 35px;
+    font-weight: bolder;
+    text-align: justify;
+    height:60px;
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+    border:none;
+    padding: 2px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 160px;
+    z-index: 1;
+    border:none;
+    color: white;
+}
+
+.dropdown-content a {
+    color: #21292B;
+    padding: 10px 10px;
+    display: block;
+    border:none;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #FFBE00;
+    color: white;
+}
 /*shoppingcart*/
 td{
     padding: 5px;
