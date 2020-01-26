@@ -53,7 +53,7 @@ hr{
     border-top: 3px solid #FFBE00;
     margin-right: 70%;
 }
-section{
+.inleiding{
     height: 15vh;
     background-color: white;
 }
@@ -314,11 +314,75 @@ table{
 
 /*indexpage*/
 #indextop{
-    background-image: url("../interface/images/EventJazzGrotenMarkt.png");
+    background-image: url("../interface/images/indexbackground.png");
     background-size: cover;
     width: 100%;
-    height: 25vh;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
 }
+#column{
+    margin: auto;
+}
+#moreinfo{
+    margin-top: 30px;
+}
+#indexintro{
+    height: 20vh;
+
+}
+#indexnav{
+    height: 15vh;
+}
+#indexselectionmenu{
+    background-color: #666666;
+    height: 45vh;
+}
+.indexintrosplit{
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+
+}
+#clickables{
+    margin-top: 30px;
+    position: relative;
+}
+h3{
+    color: white;
+    font-size: 350%;
+    font-family: Roboto;
+}
+.eventchose{
+    margin-right: 30px;
+}
+#jazztext, #dancetext, #historictext, #foodtext{
+    position: absolute;
+    color: white;
+    z-index: 2;
+    font-family: Roboto;
+    font-size: 150%;
+    bottom: 48%;
+}
+#jazztext{
+    left: 24%;
+}
+#dancetext{
+    left: 39%;
+}
+#historictext{
+    right: 40%;
+}
+#foodtext{
+    right: 26%;
+}
+#clickables img:hover{
+    transform: scale(1.1,1.1);
+}
+#moreinfo:hover{
+    transform: scale(1.1,1.1);
+}
+
 
 
 
