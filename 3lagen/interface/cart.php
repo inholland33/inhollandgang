@@ -26,7 +26,7 @@ $ticket = new Ticket;
                 }
                 ?>
         </table>
-        <form action="chose_payment.php" method="post">
+        <form action="payment.php" method="post">
             <input type="submit" name="pay" value="Go to payment">
         </form>
                 <?php

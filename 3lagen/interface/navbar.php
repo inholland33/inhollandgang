@@ -26,6 +26,7 @@
         </div>
         <a href="index.php">Program</a>
         <a href="ticketpage.php">Tickets</a>
+        <a href="searchindex.php">Search</a>
         <a href="index.php">Contact</a>
         <ul id="smallmenu">
             <li>
