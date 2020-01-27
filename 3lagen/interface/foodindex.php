@@ -7,7 +7,7 @@ $contentLogic = new ContentLogic();
 $contentLogic->GetContentFoodPage();
 
 ?>
-<style><?php include '../general/foodindex.css'; ?></style>
+<style><?php include '../general/romcss.css'; ?></style>
 <main>
 
     <div class = "container">

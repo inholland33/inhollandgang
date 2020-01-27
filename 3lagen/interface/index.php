@@ -1,4 +1,5 @@
 <?php
+//Include een header en de navigatiebalk.
 require 'header.php';
 require 'navbar.php';
 ?>
@@ -6,12 +7,15 @@ require 'navbar.php';
 <main>
 
     <div id="indextop">
+<!--        In deze div staat het bovenste scherm van de index pagina.-->
+<!--        Het bevat knoppen naar de ticketpagina en een knop om automatisch naar de onderste pagna van de indexpagina te scrollen.-->
+<!--        Tussen de script tags staat hoe ik dat gedaan heb.-->
         <div id="column">
         <section id="logohaarlem"></section>
         <h1 class="titel" id="indextitle">HAARLEM FESTIVAL</h1>
         <h2 class="ondertitel" id="indexUnderTitle">25TH - 30TH JULY</h2>
         <section>
-            <button class="gototicketpage">TICKETS</button><button class="gotoprogrammpage">PROGRAMM</button>
+            <button class="gototicketpage" onclick="GoToPage('tickets')">TICKETS</button><button class="gotoprogrammpage" onclick="GoToPage('programm')">PROGRAMM</button>
         </section>
         <img src="images/moreinfo.png" id="moreinfo" onclick="ScrollWin()">
             <script>
@@ -22,6 +26,9 @@ require 'navbar.php';
         </div>
     </div>
     <div id="indexbottom">
+<!--        In deze div staat het onderste scherm van de index pagina.-->
+<!--        Hier zijn vier images clickable gemaakt die je naar de verschillende eventpages verwijzen.-->
+<!--        Ook vanuit dit scherm kun je naar de ticketpagina.-->
         <section id="indexintro">
             <h2>Haarlem Festival</h2>
             <hr class="indexintrosplit">

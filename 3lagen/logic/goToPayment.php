@@ -1,7 +1,12 @@
 <?php
 $ticketList = $_POST['ticketList'];
 
-$_SESSION['ticketsCart'] = $ticketList;
+foreach ($ticketList as $item){
+    foreach ($_SESSION['ticketsCart'] as $sesItem) {
+        if ($item->ticketId == $sesItem->ticketId){
+            $_SESSION['ticketsCart'][key($sesItem)]->ticketAmount =$item->ticketAmount;
+        }
+    }
+}
 
-echo "<p>$ticketList</p>";
-//header("Location: ../interface/chose_payment.php");
+header("Location: ../interface/chose_payment.php");

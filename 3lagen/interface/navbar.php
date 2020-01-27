@@ -26,6 +26,7 @@
         </div>
         <a href="index.php">Program</a>
         <a href="ticketpage.php">Tickets</a>
+        <a href="searchindex.php">Search</a>
         <a href="index.php">Contact</a>
 <!--        <form action="" method="post" id="searchbar">-->
 <!--            <input type="text" name="search" placeholder="Search">-->

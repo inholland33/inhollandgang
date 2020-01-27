@@ -26,18 +26,7 @@ $contentLogic->GetContentJazzPage();*/
 
                     ?>
 
-                    <!--                <script>-->
-                    <!--                    var $input = $(".amount");-->
-                    <!--                    // Aumenta ou diminui o valor sendo 0 o mais baixo possível-->
-                    <!--                    $input.val(0);-->
-                    <!---->
-                    <!--                    $(".change").click(function(){-->
-                    <!--                        if ($(this).hasClass('plus'))-->
-                    <!--                            $input.val(parseInt($input.val())+1);-->
-                    <!--                        else if ($input.val()>=1)-->
-                    <!--                            $input.val(parseInt($input.val())-1);-->
-                    <!--                    });-->
-                    <!--                </script>-->
+
                 </table>
 
                 <hr>

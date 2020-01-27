@@ -114,27 +114,30 @@ session_start();
                         </div>
                     </div>
                     <form action="chose_payment.php" method="post">
-                        <button id="gottopayment-btn" type="submit">GO TO PAYMENT</button>
+                        <button id="gottopayment-btn" type="submit" onclick="GoToPayment()">GO TO PAYMENT</button>
                     </form>
 <!--                    Hier vraag ik alle nieuwe waardes weer op en roep ik een ajax call aan om de session te vernieuwen met deze nieuwe waardes.-->
 <!--                    <button id="gottopayment-btn" onclick='GoToPayment()'>GO TO PAYMENT</button>-->
 <!--                    <script type="text/javascript">-->
 <!--                        function GoToPayment() {-->
-<!--                            var tickets = new Array();-->
-<!--                            var names = document.getElementsByClassName('name').innerHTML;-->
-<!--                            var amounts = document.getElementsByClassName('amount').innerHTML;-->
-<!--                            var prices = document.getElementsByClassName('price').innerHTML;-->
-<!--                            console.log(names);-->
-<!--                            for(var i = 0; i < 5; ++i){-->
-<!--                                var ticket = new Object(),-->
-<!--                                    ticketName = "",-->
-<!--                                    ticketAmount = 0,-->
-<!--                                    ticketPrice = 0;-->
-<!--                                ticket[ticketName] = names[i];-->
-<!--                                ticket[ticketAmount] = amounts[i];-->
-<!--                                ticket[ticketPrice] = prices[i];-->
+<!--                            var tickets = [];-->
+<!--                            var names = document.getElementsByClassName('name');-->
+<!--                            var amounts = document.getElementsByClassName('amount');-->
+<!--                            var prices = document.getElementsByClassName('price');-->
+<!--                            for(var i = 0; i < names.length; ++i){-->
+<!--                                var ticket = {-->
+<!--                                    ticketName : "",-->
+<!--                                    ticketAmount : 0,-->
+<!--                                    ticketPrice : 0,-->
+<!--                                    ticketId: ""-->
+<!--                                };-->
+<!--                                ticket.ticketName = names[i].innerText;-->
+<!--                                ticket.ticketAmount = amounts[i].value;-->
+<!--                                ticket.ticketPrice = prices[i].innerText;-->
+<!--                                ticket.ticketId = prices[i].id.replace("+price", "");-->
 <!--                                tickets.push(ticket);-->
 <!--                            }-->
+<!--                            console.log(tickets);-->
 <!--                            $.ajax({-->
 <!--                                url: '../logic/goToPayment.php',-->
 <!--                                method: 'POST',-->
