@@ -1,5 +1,5 @@
 <?php
-require_once '../DAL/db.php';
+require_once '../DAL/DB.php';
 include '../DAL/UserDAL.php';
 include '../logic/Users.php';
 $users = new Users();
@@ -10,9 +10,8 @@ if (isset($_POST['register']))
     $dateOfBirth = $_POST['dateOfBirth'];
     $password = $_POST['password'];
     $passwordRepeat = $_POST['password-repeat'];
-    $rank = $_POST['rank'];
 
-    if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat) || empty($dateOfBirth) || empty($rank))
+    if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat) || empty($dateOfBirth))
     {
         header("Location: ../interface/register.php?error=emptyfields&username=".$username."&email=".$email);
         exit();

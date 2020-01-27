@@ -4,8 +4,9 @@
 class Users extends UserDAL
 {
 
-    public function register($username, $email, $password, $dateOfBirth, $rank)
+    public function register($username, $email, $password, $dateOfBirth)
     {
+        $rank = 'customer';
         $this->addUser($username, $email, $password, $dateOfBirth, $rank);
         header("location: ../view/index.php");
     }

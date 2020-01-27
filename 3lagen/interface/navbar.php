@@ -11,7 +11,7 @@
                 <a href="https://www.twitter.com"><img src="/inhollandgang/3lagen/interface/images/twitter.png" alt="twitter"></a>
             </li>
         </ul>
-        <a id="homebutton">
+        <a href="index.php" id="homebutton">
             HAARLEMFESTIVAL
         </a>
         <a href="index.php">Home</a>
@@ -27,6 +27,10 @@
         <a href="index.php">Program</a>
         <a href="ticketpage.php">Tickets</a>
         <a href="index.php">Contact</a>
+<!--        <form action="" method="post" id="searchbar">-->
+<!--            <input type="text" name="search" placeholder="Search">-->
+<!--            <input type="submit" name="submitSearch">-->
+<!--        </form>-->
         <ul id="smallmenu">
             <li>
                 <img src="/inhollandgang/3lagen/interface/images/GBflag.png"></a>

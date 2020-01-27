@@ -22,6 +22,10 @@ $ticket = new Ticket();
             if (!empty($_GET['pagetype'])){
                 $type = $_GET[ 'pagetype'];
             }
+            elseif (!empty($_POST['event']))
+            {
+                $type = $_POST['event'];
+            }
             $day1 = new DateTime('2020-07-26 00:00:00') ;
             $day2 = new DateTime('2020-07-27 00:00:00') ;
             $day3 = new DateTime('2020-07-28 00:00:00') ;

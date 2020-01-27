@@ -1,7 +1,7 @@
 <?php
-require_once 'db.php';
+require_once 'DB.php';
 
-class Ticket_DAL extends db
+class Ticket_DAL extends DB
 {
     function getTicketsByType($type)
     {
