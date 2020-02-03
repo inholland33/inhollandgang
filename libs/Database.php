@@ -23,8 +23,11 @@ class Database extends PDO
     public function selectAll($sql, $params = array(), $fetchMode = PDO::FETCH_ASSOC)
     {
         $sth = $this->prepare($sql);
-        foreach ($params as $key => $value) {
-            $sth->bindValue("$key", $value);
+        if (!empty($params)) {
+
+            foreach ($params as $key => $value) {
+                $sth->bindValue("$key", $value);
+            }
         }
 
         $sth->execute();
@@ -54,7 +57,7 @@ class Database extends PDO
      * @param string $table A name of table to insert into
      * @param string $data An associative array
      */
-    public function insert($table, $data)
+    public function insert($table, $data, $return = false, $fetchmode = PDO::FETCH_ASSOC)
     {
         ksort($data);
 
@@ -68,6 +71,13 @@ class Database extends PDO
         }
 
         $sth->execute();
+
+        if ($return) {
+            $result = parent::lastInsertId();
+            return $result;
+        }
+
+
     }
 
     /**
@@ -97,7 +107,6 @@ class Database extends PDO
         $sth->execute();
         return $sth->rowCount();
     }
-
     /**
      * delete
      *
@@ -106,14 +115,25 @@ class Database extends PDO
      * @param integer $limit
      * @return integer Affected Rows
      */
-    public function delete($tables, $where, $params = array(), $limit = 1)
+    public function delete($table, $where, $params = array(), $limit = 1)
     {
 //        return
-        $sth = $this->prepare("DELETE FROM $tables[0] WHERE $where LIMIT $limit");
+        $sth = $this->prepare("DELETE FROM $table WHERE $where LIMIT $limit");
         foreach ($params as $key => $value) {
             $sth->bindValue("$key", $value);
         }
         $sth->execute();
+        echo $sth->rowCount();
+    }
+
+    function getEnum($table, $field)
+    {
+        $query = $this->query("SHOW COLUMNS FROM {$table} WHERE Field = '{$field}'");
+        $result = $query->fetchColumn(1);
+
+        preg_match("/^enum\(\'(.*)\'\)$/", $result, $matches);
+        $enum = explode("','", $matches[1]);
+        return $enum;
     }
 
 }

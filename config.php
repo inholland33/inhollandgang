@@ -16,3 +16,11 @@ define('DB_PASS', '');
 define('URL', 'http://localhost/inhollandgang/');
 
 define('LIBS', 'libs/');
+
+//office information
+define('COMPANY', 'Haarlem Festival');
+define('STREET', 'Kruisstraat 35');
+define('CITY', 'Haarlem');
+define('COUNTRY', 'Nederland');
+define('ZIP', '2011 PW');
+define('PHONE', '+312323547612');

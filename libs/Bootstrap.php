@@ -76,7 +76,6 @@ class Bootstrap
             $this->_error();
             //echo 1;
         }
-
     }
 
     /**
@@ -113,7 +112,6 @@ class Bootstrap
                 $this->_error();
             }
         }
-
         // Determine what to load
         switch ($length) {
             case 5:
@@ -127,12 +125,12 @@ class Bootstrap
                 break;
 
             case 3:
-                //Controller->Method(Param1, Param2)
+                //Controller->Method(Param1)
                 $this->_controller->{$this->_url[1]}($this->_url[2]);
                 break;
 
             case 2:
-                //Controller->Method(Param1, Param2)
+                //Controller->Method()
                 $this->_controller->{$this->_url[1]}();
                 break;
 

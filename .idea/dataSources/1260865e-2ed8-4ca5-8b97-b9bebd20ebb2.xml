@@ -3,11 +3,13 @@
   <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.17">
     <root id="1">
       <ServerVersion>10.4.6</ServerVersion>
+      <Dbms>MARIADB</Dbms>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultCasing>lower/lower</DefaultCasing>
     </root>
     <schema id="2" parent="1" name="haarlemfestival">
       <Current>1</Current>
+      <Visible>1</Visible>
       <Collation>latin1_swedish_ci</Collation>
     </schema>
     <schema id="3" parent="1" name="information_schema">
@@ -1313,5 +1315,298 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
+    <table id="330" parent="2" name="artist"/>
+    <table id="331" parent="2" name="content"/>
+    <table id="332" parent="2" name="order"/>
+    <table id="333" parent="2" name="ticket"/>
+    <table id="334" parent="2" name="ticket_artist"/>
+    <table id="335" parent="2" name="ticket_order"/>
+    <table id="336" parent="2" name="user"/>
+    <column id="337" parent="330" name="artist_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="338" parent="330" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="339" parent="330" name="artist_id">
+      <ColNames>artist_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="340" parent="330" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>artist_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="341" parent="331" name="content_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="342" parent="331" name="page">
+      <Position>2</Position>
+      <DataType>enum(&apos;jazz&apos;, &apos;dance&apos;, &apos;food&apos;, &apos;historic&apos;, &apos;home&apos;, &apos;contact&apos;)|0e</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="343" parent="331" name="type">
+      <Position>3</Position>
+      <DataType>enum(&apos;title&apos;, &apos;subtitle&apos;, &apos;header&apos;, &apos;content&apos;, &apos;image&apos;)|0e</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="344" parent="331" name="text">
+      <Position>4</Position>
+      <DataType>varchar(2048)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="345" parent="331" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>content_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="346" parent="332" name="order_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="347" parent="332" name="user_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="348" parent="332" name="total_price">
+      <Position>3</Position>
+      <DataType>decimal(15,2 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="349" parent="332" name="date_time">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="350" parent="332" name="user_id">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="351" parent="332" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>order_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="352" parent="332" name="order_ibfk_1">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>haarlemfestival</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>user_id</RefColNames>
+    </foreign-key>
+    <column id="353" parent="333" name="ticket_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="354" parent="333" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="355" parent="333" name="event">
+      <Position>3</Position>
+      <DataType>enum(&apos;jazz&apos;, &apos;historic&apos;, &apos;dance&apos;, &apos;food&apos;)|0e</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="356" parent="333" name="type">
+      <Position>4</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="357" parent="333" name="price">
+      <Position>5</Position>
+      <Comment>in euros</Comment>
+      <DataType>decimal(15,2 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="358" parent="333" name="stock">
+      <Position>6</Position>
+      <DataType>int(10)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="359" parent="333" name="start_date_time">
+      <Position>7</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="360" parent="333" name="end_date_time">
+      <Position>8</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="361" parent="333" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ticket_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="362" parent="334" name="ticket_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="363" parent="334" name="artist_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="364" parent="334" name="ticket_id">
+      <ColNames>ticket_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="365" parent="334" name="artist_id">
+      <ColNames>artist_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <foreign-key id="366" parent="334" name="ticket_artist_ibfk_2">
+      <ColNames>ticket_id</ColNames>
+      <RefSchemaName>haarlemfestival</RefSchemaName>
+      <RefTableName>ticket</RefTableName>
+      <RefColNames>ticket_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="367" parent="334" name="ticket_artist_ibfk_1">
+      <ColNames>artist_id</ColNames>
+      <RefSchemaName>haarlemfestival</RefSchemaName>
+      <RefTableName>artist</RefTableName>
+      <RefColNames>artist_id</RefColNames>
+    </foreign-key>
+    <column id="368" parent="335" name="order_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="369" parent="335" name="ticket_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="370" parent="335" name="amount">
+      <Position>3</Position>
+      <DataType>int(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="371" parent="335" name="number_of_adults">
+      <Position>4</Position>
+      <DataType>int(3)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="372" parent="335" name="number_of_children">
+      <Position>5</Position>
+      <DataType>int(3)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="373" parent="335" name="order_id">
+      <ColNames>order_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="374" parent="335" name="ticket_id">
+      <ColNames>ticket_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <foreign-key id="375" parent="335" name="ticket_order_ibfk_1">
+      <ColNames>order_id</ColNames>
+      <RefSchemaName>haarlemfestival</RefSchemaName>
+      <RefTableName>order</RefTableName>
+      <RefColNames>order_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="376" parent="335" name="ticket_order_ibfk_2">
+      <ColNames>ticket_id</ColNames>
+      <RefSchemaName>haarlemfestival</RefSchemaName>
+      <RefTableName>ticket</RefTableName>
+      <RefColNames>ticket_id</RefColNames>
+    </foreign-key>
+    <column id="377" parent="336" name="user_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="378" parent="336" name="email">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="379" parent="336" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="380" parent="336" name="password">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="381" parent="336" name="date_of_birth">
+      <Position>5</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="382" parent="336" name="date_of_registration">
+      <Position>6</Position>
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="383" parent="336" name="rank">
+      <Position>7</Position>
+      <DataType>enum(&apos;customer&apos;, &apos;volunteer&apos;, &apos;admin&apos;, &apos;owner&apos;)|0e</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="384" parent="336" name="user_email">
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="385" parent="336" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="386" parent="336" name="user_email">
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>user_email</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>

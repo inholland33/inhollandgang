@@ -28,7 +28,7 @@
             <a href="<?php echo URL; ?>event" class="list-group-item list-group-item-action bg-light">Event
                 Management</a>
             <a href="<?php echo URL; ?>user" class="list-group-item list-group-item-action bg-light">User Management</a>
-            <a href="<?php echo URL; ?>admin" class="list-group-item list-group-item-action bg-light">Admin</a>
+            <a href="<?php echo URL; ?>invoice" class="list-group-item list-group-item-action bg-light">Invoices</a>
             <a href="<?php echo URL; ?>owner" class="list-group-item list-group-item-action bg-light">Superadmin</a>
         </section>
     </article>
