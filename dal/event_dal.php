@@ -8,35 +8,76 @@ class Event_Dal extends Dal
         $this->db = parent::getInstance()->getConnection();
     }
 
-    public function asyncInsert()
+    public function create($data)
     {
-        $text = $_POST['text'];
+        $result = $this->db->insert('ticket', $data[0], true);
 
-        $this->db->insert('content', array('text' => $text));
+        echo $result;
+        foreach ($data[1]['artists'] as $artist) {
+            $this->db->insert('ticket_artist', array(
+                "artist_id" => $artist,
+                'ticket_id' => $result
+            ));
+        }
 
-        $data = array('text' => $text, 'id' => $this->db->lastInsertId());
-        echo json_encode($data);
-        exit;
     }
 
     public function asyncGetListings($sql, $params = array())
     {
         $result = $this->db->selectAll($sql, $params);
+
         echo json_encode($result);
+    }
+
+    public function asyncReturnListings($sql, $params = array())
+    {
+        $result = $this->db->selectAll($sql, $params);
+
+        return $result;
+    }
+
+    public function edit($table, $data, $changeArtist = true)
+    {
+        $where = "ticket_id = :ticket_id";
+        $whereParams = array(":ticket_id" => $data[0]["ticket_id"]);
+
+        $this->db->update($table, $data[0], $where, $whereParams);
+
+        if ($changeArtist) {
+            $this->db->delete('ticket_artist', $where, $whereParams, $limit = 999);
+
+            foreach ($data[1]['artists'] as $artist) {
+                $this->db->insert('ticket_artist', array(
+                    "artist_id" => $artist,
+                    'ticket_id' => $data[0]["ticket_id"]
+                ));
+            }
+        }
 
     }
 
-    public function asyncEdit($table, $id, $data)
+    public function asyncSwap($ticket1, $ticket2)
     {
-        $where = "content_id = :id";
-        $whereParams = array("id" => $id);
+        $table = "ticket";
+        $where = "ticket_id = :ticket_id";
+        $whereParams = array(":ticket_id" => $ticket1["ticket_id"]);
 
-        $row = $this->db->update($table, $data, $where, $whereParams);
-        echo json_encode($row);
+        $data = array("start_date_time" => $ticket2["start_date_time"],
+            "end_date_time" => $ticket2["end_date_time"]);
+
+        $this->db->update($table, $data, $where, $whereParams);
     }
 
     public function asyncDeleteListing($tables, $where, $params)
     {
-        $this->db->delete($tables, $where, $params);
+        foreach ($tables as $table) {
+            $this->db->delete($table, $where, $params, 999);
+        }
+    }
+
+    function getEnum($table, $field)
+    {
+        $enum = $this->db->getEnum($table, $field);
+        echo json_encode($enum);
     }
 }

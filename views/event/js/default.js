@@ -1,33 +1,34 @@
-function deleteEvent(ticket_id) {
-    $.post('event/asyncDeleteListing', {'ticket_id': ticket_id}, function (result) {
-
-    });
+function togglePanels() {
+    $('.addPanel').toggle();
+    $('.addContainer').toggle();
+    $('input[type=checkbox]').prop('checked', false);
 }
-
-function addEvent() {
-
-    $('.addPanel').css('visibility', 'visible');
-
-    $('#artists').empty();
-
-    $.post('event/asyncGetArtists/', function (artist) {
-        for (var i = 0; i < artist.length; i++) {
-            //apend artist name to the panel...
-            $('#artists').append('<label class="checkbox">' + artist[i].name +
-                '<input type="checkbox" name="artist" value="' + artist[i].artist_id + '">' +
-                '<span class="checkmark"></span>' +
-                '</label>');
-        }
-    }, 'json');
-
-    $('.addContainer').css('visibility', 'visible');
-}
-
 
 $(function () {
 
+    if ($('#event').is(':empty')) {
+        $.post('event/getEnum/ticket/event', function (event) {
+            for (var i = 0; i < event.length; i++) {
+
+                $('#event').append('<option value="' + event[i] + '">' + event[i] + '</option>');
+            }
+
+        }, 'json');
+    }
+    if ($('#artists').is(':empty')) {
+        $.post('event/asyncGetArtists/', function (artist) {
+            for (var i = 0; i < artist.length; i++) {
+                //apend artist name to the panel...
+                $('#artists').append('<label class="checkbox">' + artist[i].name +
+                    '<input type="checkbox" name="artists[]" value="' + artist[i].artist_id + '">' +
+                    '<span rel="' + artist[i].artist_id + '" class="checkmark"></span>' +
+                    '</label>');
+            }
+        }, 'json');
+    }
 
     $('.getEvent').live('click', function () {
+
         $('#listInserts').empty();
         $('#buttons').empty();
         var event = $(this).attr('rel');
@@ -36,7 +37,7 @@ $(function () {
                 //If this IS the LAST LOOP OR the NEXT ticket_id IS NOT the same as the CURRENT ticket_id
                 if (((i + 1) >= ticket.length) || (ticket[i].ticket_id !== ticket[i + 1].ticket_id)) {
                     //ADD new ROW to the table with the tickets of the query
-                    $('#listInserts').append('<tr> ' +
+                    $('#listInserts').append('<tr rel="' + ticket[i].ticket_id + '"> ' +
                         '<th scope="row">' + ticket[i].ticket_id + '</th>' +
                         '<td>' + ticket[i].ticketName + '</td>' +
                         '<td>' + ticket[i].type + '</td>' +
@@ -46,9 +47,9 @@ $(function () {
                         '<td>' + ticket[i].end_date_time + '</td>' +
                         '<td>' + ticket[i].artistName + '</td>' +
                         '<td>' +
-                        '<a href="./event/edit/' + ticket[i].ticket_id + '">edit </a>' +
-                        '<a href="#" onclick="deleteEvent(' + ticket[i].ticket_id + ');" >delete </a>' +
-                        '<a href="./event/switch/' + ticket[i].ticket_id + '">swap</a>' +
+                        '<a class="edit" href="#" rel="' + ticket[i].ticket_id + '">edit </a>' +
+                        '<a class="delete" href="#" rel="' + ticket[i].ticket_id + '">delete </a>' +
+                        '<a class="swap" href="#" rel="' + ticket[i].ticket_id + '">swap </a>' +
                         '</td>');
                 } else {
                     //The NEXT artist name is CURRENT artistName + NEXT artistName together
@@ -56,38 +57,101 @@ $(function () {
                 }
             }
             //ADD button
-            $('#buttons').append('</br> <button id="addEvent" class="btn btn-success float-right" onclick="addEvent();">New</button>');
+            $('#buttons').append('</br> <button id="create" class="btn btn-success float-right" rel="' + event + '">New</button>');
 
         }, 'json');
     });
 
-    $('.addPanel').click(function () {
-        $('.addPanel').css('visibility', 'hidden');
-        $('.addContainer').css('visibility', 'hidden');
-    });
-    $('#closePanel').click(function () {
-        $('.addPanel').css('visibility', 'hidden');
-        $('.addContainer').css('visibility', 'hidden');
+    $('#create').live('click', function () {
+
+        var event = $(this).attr('rel');
+
+        $('.addContainer').attr('action', CURL + 'event/create');
+
+        togglePanels();
     });
 
+    $('.edit').live('click', function () {
 
-    $('#updateContent').live('click', function () {
-        if ($('.notUpdated').length === 0) {
-            alert("all data is saved!");
+        var ticket_id = $(this).attr('rel');
+        $.post('event/asyncGetTicket/', {'ticket_id': ticket_id}, function (ticket) {
+            console.log(ticket[0].event);
+
+            $('input[name=ticket_id]').val(ticket[0].ticket_id);
+            $('option[value=' + ticket[0].event + ']').prop('selected', true);
+            $('input[name=event]').val(ticket[0].event);
+            $('input[name=type]').val(ticket[0].type);
+            $('input[name=price]').val(ticket[0].price);
+            $('input[name=stock]').val(ticket[0].stock);
+            $('input[name=start_date_time]').valueAsNumber = ticket[0].start_date_time;
+            $('input[name=end_date_time]').valueAsNumber = ticket[0].end_date_time;
+
+            for (var i = 0; i < ticket.length; i++) {
+                $('input[value=' + ticket[i].artist_id + ']').prop('checked', 'checked');
+            }
+        }, 'json');
+
+        $('.addContainer').attr('action', CURL + 'event/edit');
+        togglePanels();
+
+
+    });
+
+    $('.delete').live('click', function () {
+
+        if (confirm("Are you sure you want to delete the selected row?")) {
+            try {
+                var ticket_id = $(this).attr('rel');
+                $.post('event/asyncDeleteTicket/', {'ticket_id': ticket_id}, function () {
+
+                }, "json");
+            } catch (e) {
+
+            } finally {
+                $('tr[rel=' + ticket_id + ']').remove();
+            }
         }
     });
 
-    $('#randomInsert').submit(function () {
-        var url = $(this).attr('action');
-        var data = $(this).serialize();
+    $('.swap').live('click', function (e) {
 
-        $.post(url, data, function (o) {
-            $('#listInserts').append('<div>' + o.id + " " + o.text + ' <a class="del" rel="' + o.id + '" href="#">X</a></div>');
-        }, 'json');
+        var ticket_id1 = $(this).attr('rel');
 
-        return false;
+        $('tbody > tr').mouseenter(function () {
+            $(this).addClass('highlight');
+        });
+        $('tbody > tr').mouseleave(function () {
+            $(this).removeClass('highlight');
+        });
+        $('tbody').mouseleave(function () {
+            e.stopPropagation();
+        });
+
+        $('tbody > tr').live('click', function () {
+            var ticket_id2 = $(this).attr('rel');
+
+            $.post('event/asyncSwapTickets/', {'ticket_id1': ticket_id1, 'ticket_id2': ticket_id2}, function (tickets) {
+                alert("Swapped successfully! refresh to see the results.");
+            });
+        });
     });
 
+    $('.addPanel').click(function () {
+        togglePanels();
+    });
+
+    $('#closePanel').click(function () {
+        togglePanels();
+    });
+
+    $('#submit').click(function () {
+        checked = $("input[type=checkbox]:checked").length;
+
+        if (!checked) {
+            alert("You must check at least one checkbox.");
+            return false;
+        }
+    });
 }, 'json');
 
 

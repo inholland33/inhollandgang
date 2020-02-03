@@ -8,19 +8,26 @@ class View
     }
 
 
-    public function render($name, $cms = false)
+    public function render($name, $cms = false, $menus = true)
     {
         require 'views/header.php'; ?>
         <?php
         if ($cms == true) {
-
-            require 'views/cms_menu.php';
-            require 'views/' . $name . '.php';
-            require 'views/footer.php';
+            if ($menus == true) {
+                require 'views/cms_menu.php';
+                require 'views/' . $name . '.php';
+                require 'views/footer.php';
+            } else {
+                require 'views/' . $name . '.php';
+            }
         } else {
-            require 'views/NavBalk.php';
-            require 'views/' . $name . '.php';
-            require 'views/footer.php';
+            if ($menus == true) {
+                require 'views/NavBalk.php';
+                require 'views/' . $name . '.php';
+                require 'views/footer.php';
+            } else {
+                require 'views/' . $name . '.php';
+            }
         }
     }
 
