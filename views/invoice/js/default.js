@@ -2,11 +2,11 @@ $(function () {
     $('#listInserts').empty();
     $('#buttons').empty();
     $.post('invoice/asyncGetListings/', function (order) {
-        console.log(order);
         for (var i = 0; i < order.length; i++) {
             $('#listInserts').append('<tr rel="' + order[i].order_id + '"> ' +
                 '<th scope="row">' + order[i].order_id + '</th>' +
                 '<td>' + order[i].user_id + '</td>' +
+                '<td>' + order[i].venue + '</td>' +
                 '<td>' + order[i].name + '</td>' +
                 '<td>' + order[i].email + '</td>' +
                 '<td>' + order[i].total_price + '</td>' +

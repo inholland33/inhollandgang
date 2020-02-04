@@ -85,7 +85,7 @@
     <!--    ADMIN  -->
     <article class="dashboardContainer" onclick="location.href='<?php echo URL; ?>invoice';">
         <section class="dashboardHeader">
-            <img class="dashboardIcon" src="<?php echo URL; ?>/public/img/ico/lock.png" alt="icon" width="90px"
+            <img class="dashboardIcon" src="<?php echo URL; ?>/public/img/ico/invoice.png" alt="icon" width="90px"
                  height="90px">
             <article class="dashboardTitle">
                 <h1>Invoices</h1>
@@ -96,29 +96,18 @@
         </section>
     </article>
     <!--    SUPERADMIN  -->
-    <article class="dashboardContainer" onclick="location.href='<?php echo URL; ?>owner';">
-        <section class="dashboardHeader">
-            <img class="dashboardIcon" src="<?php echo URL; ?>/public/img/ico/supericon.jpg" alt="icon" width="90px"
-                 height="90px">
-            <article class="dashboardTitle">
-                <h1>Superadmin</h1>
-                <h5></h5>
-            </article>
-        </section>
-        <section class="dashboardLinks">
-            <!--            <h3>Direct Links</h3>-->
-            <!--            <article class="dashboardHrefs">-->
-            <!--                <a href="--><?php //echo URL; ?><!--/content/home">Pages</a>-->
-            <!--                <a href="--><?php //echo URL; ?><!--/content/home">Home Page</a>-->
-            <!--                <a href="--><?php //echo URL; ?><!--/content/jazz">Jazz</a>-->
-            <!--                <a href="--><?php //echo URL; ?><!--/content/historic">Historic</a>-->
-            <!--                <a href="--><?php //echo URL; ?><!--/content/dance">Dance</a>-->
-            <!--                <a href="--><?php //echo URL; ?><!--/content/food">Food</a>-->
-            <!--                <a href="--><?php //echo URL; ?><!--/content/contact">Contact</a>-->
-            <!--                <a href="--><?php //echo URL; ?><!--/content/account">Account</a>-->
-            <!--                <a href="--><?php //echo URL; ?><!--/content/shopping cart">Shopping cart</a>-->
-            <!--            </article>-->
-        </section>
-    </article>
+    <!--    <article class="dashboardContainer" onclick="">-->
+    <!--        <section class="dashboardHeader">-->
+    <!--            <img class="dashboardIcon" src="-->
+    <?php //echo URL; ?><!--/public/img/ico/supericon.jpg" alt="icon" width="90px"-->
+    <!--                 height="90px">-->
+    <!--            <article class="dashboardTitle">-->
+    <!--                <h1>Superadmin</h1>-->
+    <!--                <h5></h5>-->
+    <!--            </article>-->
+    <!--        </section>-->
+    <!--        <section class="dashboardLinks">-->
+    <!--        </section>-->
+    <!--    </article>-->
 
 </section>

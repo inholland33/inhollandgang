@@ -1,16 +1,23 @@
 function togglePanels() {
     $('.addPanel').toggle();
     $('.addContainer').toggle();
-    $('input[type=checkbox]').prop('checked', false);
+
+    //empty fields
+    $('input[name=ticket_id]').val("");
+    $('input[name=venue]').val("");
+    $('input[name=event]').val("");
+    $('input[name=price]').val("");
+    $('input[name=stock]').val("");
+    $('input[name=date_time]').val("");
+    $('input[type=checkbox]').val("");
 }
 
 $(function () {
 
-    if ($('#event').is(':empty')) {
-        $.post('event/getEnum/ticket/event', function (event) {
-            for (var i = 0; i < event.length; i++) {
-
-                $('#event').append('<option value="' + event[i] + '">' + event[i] + '</option>');
+    if ($('#type').is(':empty')) {
+        $.post('event/getEnum/ticket/type', function (type) {
+            for (var i = 0; i < type.length; i++) {
+                $('#type').append('<option value="' + type[i] + '">' + type[i] + '</option>');
             }
 
         }, 'json');
@@ -28,23 +35,22 @@ $(function () {
     }
 
     $('.getEvent').live('click', function () {
-
         $('#listInserts').empty();
         $('#buttons').empty();
-        var event = $(this).attr('rel');
-        $.post('event/asyncGetListings/', {'event': event}, function (ticket) {
+        var type = $(this).attr('rel');
+        $.post('event/asyncGetListings/', {'type': type}, function (ticket) {
             for (var i = 0; i < ticket.length; i++) {
                 //If this IS the LAST LOOP OR the NEXT ticket_id IS NOT the same as the CURRENT ticket_id
                 if (((i + 1) >= ticket.length) || (ticket[i].ticket_id !== ticket[i + 1].ticket_id)) {
                     //ADD new ROW to the table with the tickets of the query
                     $('#listInserts').append('<tr rel="' + ticket[i].ticket_id + '"> ' +
                         '<th scope="row">' + ticket[i].ticket_id + '</th>' +
-                        '<td>' + ticket[i].ticketName + '</td>' +
+                        '<td>' + ticket[i].venue + '</td>' +
+                        '<td>' + ticket[i].event + '</td>' +
                         '<td>' + ticket[i].type + '</td>' +
                         '<td>' + ticket[i].price + '</td>' +
                         '<td>' + ticket[i].stock + '</td>' +
-                        '<td>' + ticket[i].start_date_time + '</td>' +
-                        '<td>' + ticket[i].end_date_time + '</td>' +
+                        '<td>' + ticket[i].date_time + '</td>' +
                         '<td>' + ticket[i].artistName + '</td>' +
                         '<td>' +
                         '<a class="edit" href="#" rel="' + ticket[i].ticket_id + '">edit </a>' +
@@ -75,19 +81,17 @@ $(function () {
 
         var ticket_id = $(this).attr('rel');
         $.post('event/asyncGetTicket/', {'ticket_id': ticket_id}, function (ticket) {
-            console.log(ticket[0].event);
 
             $('input[name=ticket_id]').val(ticket[0].ticket_id);
-            $('option[value=' + ticket[0].event + ']').prop('selected', true);
+            $('input[name=venue]').val(ticket[0].venue);
             $('input[name=event]').val(ticket[0].event);
-            $('input[name=type]').val(ticket[0].type);
+            $('option[value=' + ticket[0].type + ']').prop('selected', true);
             $('input[name=price]').val(ticket[0].price);
             $('input[name=stock]').val(ticket[0].stock);
-            $('input[name=start_date_time]').valueAsNumber = ticket[0].start_date_time;
-            $('input[name=end_date_time]').valueAsNumber = ticket[0].end_date_time;
+            $('input[name=date_time]').valueAsNumber = ticket[0].date_time;
 
             for (var i = 0; i < ticket.length; i++) {
-                $('input[value=' + ticket[i].artist_id + ']').prop('checked', 'checked');
+                $('input[rel=' + ticket[i].artist_id + ']').prop('checked', 'checked');
             }
         }, 'json');
 
@@ -124,7 +128,6 @@ $(function () {
             $(this).removeClass('highlight');
         });
         $('tbody').mouseleave(function () {
-            e.stopPropagation();
         });
 
         $('tbody > tr').live('click', function () {
@@ -133,6 +136,9 @@ $(function () {
             $.post('event/asyncSwapTickets/', {'ticket_id1': ticket_id1, 'ticket_id2': ticket_id2}, function (tickets) {
                 alert("Swapped successfully! refresh to see the results.");
             });
+
+            $('.getEvent[rel="jazz"]').click();
+            location.reload();
         });
     });
 

@@ -3,6 +3,7 @@
     <tr>
         <th scope="col">#order</th>
         <th scope="col">#customer</th>
+        <th scope="col">venue</th>
         <th scope="col">name</th>
         <th scope="col">email</th>
         <th scope="col">Total_Price</th>

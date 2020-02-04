@@ -15,6 +15,8 @@ class Event extends Controller
     function index()
     {
         $this->view->title = "Event Management";
+        $this->view->js = array('public/js/cms.js', 'views/event/js/default.js');
+        $this->view->css = array('public/css/cms.css', 'views/event/css/event.css');
         $this->view->render('event/index', true);
     }
 
@@ -48,10 +50,10 @@ class Event extends Controller
         $where = "t.ticket_id = :ticket_id";
         $params = array(":ticket_id" => $ticket_id);
 
-        $sql = "SELECT T.ticket_id, T.name, T.type, T.event, T.price, T.stock, T.start_date_time, T.end_date_time, A.artist_id 
-          FROM $tables[0] AS T 
-          JOIN $tables[1] AS TA ON T.ticket_id = TA.ticket_id  
-          JOIN $tables[2] AS A ON TA.artist_id = A.artist_id
+        $sql = "SELECT T.ticket_id, T.event, T.venue, T.date_time, T.type, T.price, T.stock, A.artist_id 
+          FROM $tables[0] T 
+          JOIN $tables[1] TA ON T.ticket_id = TA.ticket_id  
+          JOIN $tables[2] A ON TA.artist_id = A.artist_id
           WHERE $where ORDER BY T.ticket_id";
         $data = [$sql, $params];
 
@@ -60,24 +62,24 @@ class Event extends Controller
 
     function asyncGetListings()
     {
-        $event = $_POST["event"];
+        $event = $_POST["type"];
 
         $tables = ["ticket", "ticket_artist", "artist"];
-        $where = "event = :event";
-        $params = array(":event" => $event);
+        $where = "type = :type";
+        $params = array(":type" => $event);
 
-        $sql = "SELECT T.ticket_id, T.name AS ticketName, T.type, T.event, T.price, T.stock, T.start_date_time, T.end_date_time, A.name AS artistName 
-          FROM $tables[0] AS T 
-          JOIN $tables[1] AS TA ON T.ticket_id = TA.ticket_id  
-          JOIN $tables[2] AS A ON TA.artist_id = A.artist_id
+        $sql = "SELECT T.ticket_id, T.venue, T.type, T.event, T.price, T.stock, T.date_time, A.name AS artistName
+          FROM $tables[0] T 
+          JOIN $tables[1] TA ON T.ticket_id = TA.ticket_id  
+          JOIN $tables[2] A ON TA.artist_id = A.artist_id
           WHERE $where ORDER BY T.ticket_id";
         $this->dal->asyncGetListings($sql, $params);
     }
 
     function asyncGetArtists()
     {
-        $tables = ["artist"];
-        $sql = "SELECT artist_id, name FROM $tables[0]";
+        $table = "artist";
+        $sql = "SELECT artist_id, name FROM $table";
 
         $this->dal->asyncGetListings($sql);
     }
@@ -109,14 +111,13 @@ class Event extends Controller
         isset($_POST['artists']) ? $_POST['artists'] : header("Location: {$_SERVER['HTTP_REFERER']}");
         $data = array(
             array(
-                'name' => $_POST['name'],
                 'ticket_id' => $_POST['ticket_id'],
+                'venue' => $_POST['venue'],
                 'event' => $_POST['event'],
                 'type' => $_POST['type'],
                 'price' => $_POST['price'],
                 'stock' => $_POST['stock'],
-                'start_date_time' => $_POST['start_date_time'],
-                'end_date_time' => $_POST['end_date_time']),
+                'date_time' => $_POST['date_time']),
             array(
                 'artists' => $_POST['artists']
             ));
@@ -164,8 +165,7 @@ class Event extends Controller
         $data = array(
             array(
                 'ticket_id' => $ticket1['ticket_id'],
-                'start_date_time' => $ticket2['start_date_time'],
-                'end_date_time' => $ticket2['end_date_time']
+                'date_time' => $ticket2['date_time'],
             )
         );
         $this->dal->edit($table, $data, false);
@@ -174,16 +174,15 @@ class Event extends Controller
         $data = array(
             array(
                 'ticket_id' => $ticket2['ticket_id'],
-                'start_date_time' => $ticket1['start_date_time'],
-                'end_date_time' => $ticket1['end_date_time']
+                'date_time' => $ticket1['date_time'],
             )
         );
         $this->dal->edit($table, $data, false);
 
-        if (($ticket1["start_date_time"] == $ticketTemp2["start_date_time"]) && ($ticket2["start_date_time"] == $ticketTemp1["start_date_time"])) {
-            echo json_encode("result:true");
+        if (($ticket1["date_time"] == $ticketTemp2["date_time"]) && ($ticket2["date_time"] == $ticketTemp1["date_time"])) {
+            echo json_encode("1");
         } else {
-            echo json_encode("result:false");
+            echo json_encode("0");
 
         }
 
@@ -191,6 +190,7 @@ class Event extends Controller
 
     function getEnum($table, $field)
     {
-        $this->dal->getEnum('ticket', 'event');
+
+        $this->dal->getEnum($table, $field);
     }
 }

@@ -29,7 +29,7 @@
                 Management</a>
             <a href="<?php echo URL; ?>user" class="list-group-item list-group-item-action bg-light">User Management</a>
             <a href="<?php echo URL; ?>invoice" class="list-group-item list-group-item-action bg-light">Invoices</a>
-            <a href="<?php echo URL; ?>owner" class="list-group-item list-group-item-action bg-light">Superadmin</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Superadmin</a>
         </section>
     </article>
     <!-- /#sidebar-wrapper -->

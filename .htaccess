@@ -3,6 +3,7 @@ php_value error_reporting 9999
 
 RewriteEngine On
 RewriteBase /inhollandgang/
+#RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

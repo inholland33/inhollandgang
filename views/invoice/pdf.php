@@ -66,7 +66,7 @@ $pdf->SetFont('Arial', '', 12);
 $totalInclBTW = 0;
 
 foreach ($data as $row) {
-    $pdf->Cell(120, 5, $row["event"] . ', ' . $row["ticket_name"], 1, 0);
+    $pdf->Cell(120, 5, $row["event"] . ', ' . $row["venue"], 1, 0);
     $pdf->Cell(25, 5, $row["amount"], 1, 0);
     $pdf->Cell(34, 5, $row["price"], 1, 1, 'R');//end of line
     $totalInclBTW += $row["total_price"];

@@ -8,11 +8,16 @@ define('HASH_PASSWORD_KEY', 'catsFLYhigh2000miles');
 //database
 define('DB_TYPE', 'mysql');
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'haarlemfestival');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_NAME', 'hfa3_db');
+define('DB_USER', 'hfa3');
+define('DB_PASS', 'vlbEv6Vs');
+
+//define('DB_NAME', 'haarlemfestival');
+//define('DB_USER', 'root');
+//define('DB_PASS', '');
 
 //paths
+//define('URL', 'http://hfa3.infhaarlem.nl/');
 define('URL', 'http://localhost/inhollandgang/');
 
 define('LIBS', 'libs/');

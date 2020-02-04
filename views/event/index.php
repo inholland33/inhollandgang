@@ -10,12 +10,12 @@
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">name</th>
+        <th scope="col">venue</th>
+        <th scope="col">event</th>
         <th scope="col">type</th>
         <th scope="col">price</th>
         <th scope="col">stock</th>
-        <th scope="col">start</th>
-        <th scope="col">end</th>
+        <th scope="col">date</th>
         <th scope="col">artist</th>
         <th scope="col"></th>
     </tr>
@@ -42,35 +42,30 @@
     <!--    End of hidden elements -->
 
     <article class="form-group">
-        <label for="name">Name</label>
-        <input name="name" class="form-control" type="text" placeholder="Name" required="required" value="a">
-    </article>
-    <article class="form-group">
-        <label for="event">Event</label>
-        <select id="event" name="event" class="form-control"></select>
-
+        <label for="venue">Venue</label>
+        <input name="venue" class="form-control" type="text" placeholder="Venue" required="required" value="">
     </article>
     <article class="form-group">
         <label for="type">Type</label>
-        <input name="type" class="form-control" type="text" placeholder="Type" required="required" value="a">
+        <select id="type" name="type" class="form-control"></select>
+
+    </article>
+    <article class="form-group">
+        <label for="event">Event</label>
+        <input name="event" class="form-control" type="text" placeholder="Event" required="required" value="">
     </article>
     <article class="form-group">
         <label for="price">Price in €</label>
-        <input name="price" class="form-control" type="text" placeholder="0,00" required="required" value="1.00">
+        <input name="price" class="form-control" type="text" placeholder="0,00" required="required" value="">
     </article>
     <article class="form-group">
         <label for="stock">Stock</label>
-        <input name="stock" class="form-control" type="text" placeholder="0" required="required" value="2">
+        <input name="stock" class="form-control" type="text" placeholder="0" required="required" value="">
     </article>
     <article class="form-group">
-        <label for="start_date_time">Start event</label>
-        <input name="start_date_time" class="form-control" type="datetime-local" required="required"
-               value="2018-06-07T00:00">
-    </article>
-    <article class="form-group">
-        <label for="end_date_time">End event</label>
-        <input name="end_date_time" class="form-control" type="datetime-local" required="required"
-               value="2018-06-08T01:00">
+        <label for="date_time">Date</label>
+        <input name="date_time" class="form-control" type="datetime-local" required="required"
+               value="">
     </article>
 
     <p>Artists</p>
