@@ -9,7 +9,7 @@ function togglePanels() {
     $('input[name=price]').val("");
     $('input[name=stock]').val("");
     $('input[name=date_time]').val("");
-    $('input[type=checkbox]').val("");
+    $('input[type=checkbox]').empty();
 }
 
 $(function () {
@@ -91,7 +91,7 @@ $(function () {
             $('input[name=date_time]').valueAsNumber = ticket[0].date_time;
 
             for (var i = 0; i < ticket.length; i++) {
-                $('input[rel=' + ticket[i].artist_id + ']').prop('checked', 'checked');
+                $('input[value=' + ticket[i].artist_id + ']').prop('checked', 'checked');
             }
         }, 'json');
 
