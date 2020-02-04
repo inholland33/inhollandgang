@@ -47,7 +47,7 @@ class Event extends Controller
         $ticket_id = $_POST["ticket_id"];
 
         $tables = ["ticket", "ticket_artist", "artist"];
-        $where = "t.ticket_id = :ticket_id";
+        $where = "T.ticket_id = :ticket_id";
         $params = array(":ticket_id" => $ticket_id);
 
         $sql = "SELECT T.ticket_id, T.event, T.venue, T.date_time, T.type, T.price, T.stock, A.artist_id 

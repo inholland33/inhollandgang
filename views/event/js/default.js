@@ -9,7 +9,7 @@ function togglePanels() {
     $('input[name=price]').val("");
     $('input[name=stock]').val("");
     $('input[name=date_time]').val("");
-    $('input[type=checkbox]').empty();
+    $('input[type=checkbox]').prop('checked', false);
 }
 
 $(function () {
@@ -80,8 +80,8 @@ $(function () {
     $('.edit').live('click', function () {
 
         var ticket_id = $(this).attr('rel');
-        $.post('event/asyncGetTicket/', {'ticket_id': ticket_id}, function (ticket) {
 
+        $.post('event/asyncGetTicket/', {'ticket_id': ticket_id}, function (ticket) {
             $('input[name=ticket_id]').val(ticket[0].ticket_id);
             $('input[name=venue]').val(ticket[0].venue);
             $('input[name=event]').val(ticket[0].event);
