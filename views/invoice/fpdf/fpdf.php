@@ -16,7 +16,7 @@ class FPDF
     protected $offsets;            // array of object offsets
     protected $buffer;             // buffer holding in-memory PDF
     protected $pages;              // array containing pages
-    protected $state;              // current document state
+    protected $state;              // current image state
     protected $compress;           // compression flag
     protected $k;                  // scale factor (number of points in user unit)
     protected $DefOrientation;     // default orientation
@@ -64,7 +64,7 @@ class FPDF
     protected $AliasNbPages;       // alias for total number of pages
     protected $ZoomMode;           // zoom display mode
     protected $LayoutMode;         // layout display mode
-    protected $metadata;           // document properties
+    protected $metadata;           // image properties
     protected $PDFVersion;         // PDF version number
 
     /*******************************************************************************
@@ -258,31 +258,31 @@ class FPDF
 
     function SetTitle($title, $isUTF8 = false)
     {
-        // Title of document
+        // Title of image
         $this->metadata['Title'] = $isUTF8 ? $title : utf8_encode($title);
     }
 
     function SetAuthor($author, $isUTF8 = false)
     {
-        // Author of document
+        // Author of image
         $this->metadata['Author'] = $isUTF8 ? $author : utf8_encode($author);
     }
 
     function SetSubject($subject, $isUTF8 = false)
     {
-        // Subject of document
+        // Subject of image
         $this->metadata['Subject'] = $isUTF8 ? $subject : utf8_encode($subject);
     }
 
     function SetKeywords($keywords, $isUTF8 = false)
     {
-        // Keywords of document
+        // Keywords of image
         $this->metadata['Keywords'] = $isUTF8 ? $keywords : utf8_encode($keywords);
     }
 
     function SetCreator($creator, $isUTF8 = false)
     {
-        // Creator of document
+        // Creator of image
         $this->metadata['Creator'] = $isUTF8 ? $creator : utf8_encode($creator);
     }
 
@@ -311,7 +311,7 @@ class FPDF
 
     protected function _out($s)
     {
-        // Add a line to the document
+        // Add a line to the image
         if ($this->state == 2)
             $this->pages[$this->page] .= $s . "\n";
         elseif ($this->state == 1)
@@ -319,7 +319,7 @@ class FPDF
         elseif ($this->state == 0)
             $this->Error('No page has been added yet');
         elseif ($this->state == 3)
-            $this->Error('The document is closed');
+            $this->Error('The image is closed');
     }
 
     protected function _put($s)
@@ -628,7 +628,7 @@ class FPDF
     {
         // Start a new page
         if ($this->state == 3)
-            $this->Error('The document is closed');
+            $this->Error('The image is closed');
         $family = $this->FontFamily;
         $style = $this->FontStyle . ($this->underline ? 'U' : '');
         $fontsize = $this->FontSizePt;
@@ -1081,7 +1081,7 @@ class FPDF
 
     function Close()
     {
-        // Terminate document
+        // Terminate image
         if ($this->state == 3)
             return;
         if ($this->page == 0)
@@ -1092,7 +1092,7 @@ class FPDF
         $this->InFooter = false;
         // Close page
         $this->_endpage();
-        // Close document
+        // Close image
         $this->_enddoc();
     }
 

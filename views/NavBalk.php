@@ -4,7 +4,7 @@
     <a href="https://www.facebook.com"><img src="/inhollandgang/temp/uploads/facebook.png"></a>
     <a href="https://www.twitter.com"><img src="/inhollandgang/temp/uploads/twitter.png"></a>
     <a href="<?php echo URL; ?>index">HAARLEM FESTIVAL</a>
-    <a href="<?php echo URL; ?>/index">Home</a>
+    <a href="<?php echo URL; ?>index">Home</a>
     <div class="dropdown">
         <button class="dropbtn">Events</button>
         <div class="dropdown-content">

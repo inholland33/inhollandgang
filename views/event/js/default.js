@@ -82,13 +82,18 @@ $(function () {
         var ticket_id = $(this).attr('rel');
 
         $.post('event/asyncGetTicket/', {'ticket_id': ticket_id}, function (ticket) {
+            date = new Date(ticket[0].date_time);
+            dateISO = date.toISOString();
+            datelocal = dateISO.substring(0, dateISO.length - 5);
+
+
             $('input[name=ticket_id]').val(ticket[0].ticket_id);
             $('input[name=venue]').val(ticket[0].venue);
             $('input[name=event]').val(ticket[0].event);
             $('option[value=' + ticket[0].type + ']').prop('selected', true);
             $('input[name=price]').val(ticket[0].price);
             $('input[name=stock]').val(ticket[0].stock);
-            $('input[name=date_time]').valueAsNumber = ticket[0].date_time;
+            $('input[name=date_time]').val(datelocal);
 
             for (var i = 0; i < ticket.length; i++) {
                 $('input[value=' + ticket[i].artist_id + ']').prop('checked', 'checked');
